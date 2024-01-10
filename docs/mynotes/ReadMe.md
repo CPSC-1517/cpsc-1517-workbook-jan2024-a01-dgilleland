@@ -1,5 +1,8 @@
 # My Notes - A Journal of Discovery
 
+- [Journal](./Journal.md)
+- [`git` Commands](./git-commands.md)
+
 ![Scuba](./images/stick_figure_scuba.gif)
 
 > Your first learning adventure should begin with [**Mastering Markdown**](https://guides.github.com/features/mastering-markdown/). Learning how to use Markdown now will really help you focus on capturing **content** in this journal. :sunglasses:
