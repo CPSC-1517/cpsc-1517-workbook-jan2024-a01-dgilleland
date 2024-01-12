@@ -50,7 +50,46 @@
 
 ## Jan 12
 
+- [ ] Comments/Demo of Practice Assignments
+  - About Me
+- [ ] Walk through on Projects and Solutions (see [003](./src/003/ReadMe.md))
+  - Run the following code
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/003 ./src/003
+    ```
+
+- [ ] **Homework!**
+  - Readings:
+    - VS Code [**User Interface**](https://code.visualstudio.com/docs/getstarted/userinterface)
+    - [Working with C# in VS Code](https://code.visualstudio.com/docs/languages/csharp)
+    - [Working with .NET and VS Code](https://code.visualstudio.com/docs/languages/dotnet)
+    - [Getting Started with C# in VS Code](https://code.visualstudio.com/docs/csharp/get-started)
+  - Videos:
+    - [Intro Videos on C# and VS Code](https://code.visualstudio.com/docs/csharp/introvideos-csharp)
+
+----
+
+## Jan 16 (W2)
+
+- [ ] Comments/Demo of Practice Assignments
+  - GitDoc Usage
+  - GitDoc Typing Profile
 - [ ] Lot's of Lectures!
   - **What is a Computer Program**
 - [ ] **Homework!**
   - My TLP tutorials
+
+## Jan 17
+
+## Jan 19
+
+----
+
+## Jan 23 (W3)
+
+## Jan 24
+
+## Jan 26
+
+----
