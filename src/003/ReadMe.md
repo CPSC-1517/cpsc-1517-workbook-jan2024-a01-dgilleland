@@ -65,7 +65,7 @@
    1. Type `dotnet build` in the terminal.
    1. Re-examine the files/folders inside `HelloWorld`. What changed?
 
-1. Now, it's time to run the project: Type `dotnet run`.
+1. Now, it's time to run the project: First, navigate to the `HelloWorld` folder in your terminal. Then type `dotnet run`.
 
 #### Setting Up a Multi-Root Workspace
 

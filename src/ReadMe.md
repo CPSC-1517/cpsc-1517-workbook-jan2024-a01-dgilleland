@@ -46,3 +46,9 @@ There are three things you must continually master as you go through your IT car
 - Know the **problem** you are trying to solve
 - Know your **programming language** and environment
 - Know your **tools**
+
+## :100: In-Class Demos and Practice
+
+| Week | Demos :+1: |
+|:----:| ----- |
+| 1    | [000](./000/ReadMe.md), [001 Start Here](./001-StartHere/ReadMe.md), [002](./002/ReadMe.md), [003](./003/ReadMe.md) |
