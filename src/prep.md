@@ -6,9 +6,9 @@
 
 - 004 - TLP console, arg parsing, + `dotnet new classlib`
 - 005 - File I/O + Parsing
-- 00 - ABCs (Intro, then Self Study)
+- 00 - ABCs (Week 2 Practice)
 - 00 - Debugging Review (Demo/Practice)
-- 00 - EFGs (Intro, then Self Study)
+- 00 - E-to-M (Week 3 Practice)
 - 00 - Automated Testing Intro (Demo, Don's Stuff?)
 - 00 - Console Menus + Delegates
 - 00 - Practice Makes Better (Don's Examples)
