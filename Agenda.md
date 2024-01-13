@@ -6,14 +6,18 @@
 >
 > > My philosophy of teaching, taken from [the source](https://www.bible.com/bible/111/1TH.5.14.NIV)
 
-## Jan 9 (W1)
+----
+
+## Intro, `git` and Workbook
+
+### Jan 9 (W1)
 
 - [x] Course Introduction
 - [x] Create student workbook(s)
 - [x] Install CLI tools (git, gh, node)
 - [x] Install editor (vscode)
 
-## Jan 10
+### Jan 10
 
 - [ ] Grabbing the Demos (you will need to have Node and [pnpm](https://pnpm.io/installation) installed):
   
@@ -48,7 +52,11 @@
   - Readings:
   - Videos:
 
-## Jan 12
+## OOP Grammar Review (With TDD)
+
+### Jan 12
+
+> *Online Class*
 
 - [ ] Comments/Demo of Practice Assignments
   - About Me
@@ -70,7 +78,7 @@
 
 ----
 
-## Jan 16 (W2)
+### Jan 16 (W2)
 
 - [ ] Comments/Demo of Practice Assignments
   - GitDoc Usage
@@ -80,16 +88,136 @@
 - [ ] **Homework!**
   - My TLP tutorials
 
-## Jan 17
+### Jan 17
 
-## Jan 19
+### Jan 19
+
+> *Online Class*
 
 ----
 
-## Jan 23 (W3)
+### Jan 23 (W3)
 
-## Jan 24
+### Jan 24
 
-## Jan 26
+### Jan 26
+
+> *Online Class*
+
+----
+
+## File I/O + LINQ
+
+### Jan 30 (W4)
+
+### Jan 31
+
+### Feb 2
+
+----
+
+## Blazor Intro
+
+### Feb 6 (W5)
+
+### Feb 7
+
+### Feb 9
+
+----
+
+### Feb 13 (W6)
+
+### Feb 14 (*QUIZ*)
+
+### Feb 16
+
+----
+
+## *Reading Week*
+
+### Feb 20, 21, 23
+
+----
+
+## More Blazor
+
+### Feb 27 (W7)
+
+### Feb 28
+
+### Mar 1
+
+----
+
+## Client-Server Intro
+
+### Mar 5 (W8)
+
+### Mar 6
+
+### Mar 8
+
+----
+
+## Read/Display
+
+### Mar 12 (W9)
+
+### Mar 13
+
+### Mar 15
+
+----
+
+### Mar 19 (W10)
+
+### Mar 20 (*QUIZ*)
+
+### Mar 22
+
+----
+
+## Update/Delete
+
+### Mar 26 (W11)
+
+### Mar 27
+
+### Mar 29
+
+----
+
+### Apr 2 (W12)
+
+### Apr 3
+
+### Apr 5
+
+----
+
+### Apr 9 (W13)
+
+### Apr 10
+
+### Apr 12
+
+----
+
+## In-Class Lab Time
+
+### Apr 16 (W14)
+
+### Apr 17 (*QUIZ*)
+
+### Apr 19
+
+----
+
+### Apr 23 (W15)
+
+### Apr 24
+
+### Apr 26
 
 ----
