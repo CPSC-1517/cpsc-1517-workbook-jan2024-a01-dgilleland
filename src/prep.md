@@ -2,15 +2,22 @@
 
 > :hook: :ladder: :label: :sweat_drops:
 
+### C# Review + OOP Goodness
+
 - 004 - TLP console, arg parsing, + `dotnet new classlib`
-- 005 - ABCs (Intro, then Self Study)
-- 006 - Debugging Review (Demo/Practice)
-- 007 - EFGs (Intro, then Self Study)
+- 005 - File I/O + Parsing
+- 00 - ABCs (Intro, then Self Study)
+- 00 - Debugging Review (Demo/Practice)
+- 00 - EFGs (Intro, then Self Study)
 - 00 - Automated Testing Intro (Demo, Don's Stuff?)
 - 00 - Console Menus + Delegates
-- 008 - Practice Makes Better (Don's Examples)
-- 
-- 009 - Problem Solving Steps
+- 00 - Practice Makes Better (Don's Examples)
+- 00 - Problem Solving Steps
+- 0 - Just a Little LINQ
+- 0 - Console Database Access (Read)
+- 0 - Console Database - EF Core + Reverse Engineering
+
+### FIle I/O + Parsing
 
 ### Projects
 
