@@ -2,7 +2,7 @@
 
 > :hook: :ladder: :label: :sweat_drops:
 
-### C# Review + OOP Goodness
+### C# Review + OOP Goodness (x6)
 
 - 004 - TLP console, arg parsing, + `dotnet new classlib`
 - 005 - File I/O + Parsing
@@ -17,7 +17,7 @@
 - 0 - Console Database Access (Read)
 - 0 - Console Database - EF Core + Reverse Engineering
 
-### FIle I/O + Parsing
+### FIle I/O + Parsing (x3)
 
 ### Projects
 
