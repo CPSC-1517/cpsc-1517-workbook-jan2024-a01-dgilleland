@@ -69,9 +69,9 @@ It looks like the first online calculator may have a mistake in its computations
 
 $$
 \begin{aligned}
-T_{wc} = 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16} \\
-T_a = -10 \\
-V = 20 \\
+T_{wc} &= 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16} \\
+T_a &= -10 \\
+V &= 20 \\
 \end{aligned}
 $$
 
