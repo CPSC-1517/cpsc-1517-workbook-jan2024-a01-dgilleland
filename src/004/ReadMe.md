@@ -8,7 +8,7 @@ We're also going to introduce the practice of *Test-Driven Development*, or TDD.
 
 ## Setup
 
-> ***Note:** In the previous demo, we explored how to create .NET projects and solutions using the `dotnet` command-line tool. In that demo, we laid the ground-work for this demo by learning how to creat a console application using the [Top-Level Program template](https://aka.ms/new-console-template). You can either delete that code in this folder or move it somewhere else, as we'll be creating a new console application in this demo.*
+> ***Note:** In the previous demo, we explored how to create .NET projects and solutions using the `dotnet` command-line tool. In that demo, we laid the ground-work for this demo by learning how to create a console application using the [Top-Level Program template](https://aka.ms/new-console-template). You can either delete that code in this folder or move it somewhere else, as we'll be creating a new console application in this demo.*
 
 Let's build a CLI application that makes use of command-line arguments. For this demo, we'll build a simple application that calculates the wind chill based on the air temperature and wind speed.
 
