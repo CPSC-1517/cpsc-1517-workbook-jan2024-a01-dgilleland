@@ -65,13 +65,19 @@ Is that right?! Let's try [another calculator](https://www.calculator.net/wind-c
 
 Now it's a different result. But all three values are kinda close. It's time to do some [research](https://sciencing.com/calculate-wind-chill-factor-5981683.html). Take a moment and review the article from [Sciencing.com](https://sciencing.com/calculate-wind-chill-factor-5981683.html), then come back to this lesson.
 
-It turns out, the first online calculator had a mistake in its formula!
+It looks like the first online calculator may have a mistake in its computations. It's a good thing that we're making our own calculator, so that we can be more confident about our results! Now that we're more confident on the formula, let's do the math in smaller steps.
 
 $$
-WC (Wind Chill, °F) = 35.74 + 0.6215 × T - 35.75 × V 0.16 + 0.4275 × T × V 0.16
+\begin{aligned}
+T_{wc} = 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16} \\
+T_a = -10 \\
+V = 20 \\
+\end{aligned}
 $$
 
 Let that be a lesson to you! It's important to do some ***research*** and to check with reputable sources, rather than just grab the first thing that you think is right. AI is getting better, but it's still a *new* technology, and it can get some things wrong (like Math or basic facts).
+
+
 
 ### The `WindChill` Class
 
