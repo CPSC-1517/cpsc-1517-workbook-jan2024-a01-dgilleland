@@ -1,5 +1,7 @@
 # Intro to Test-Driven Development
 
+> ***Note:** The notes here are still in rough format. Check back later for more details.*
+
 **Test-Driven Development** (*TDD*) is one of the best practices for building software applications. As we work to complete our application, we will make use of TDD practices to guide our application's internal functionality. For this, we will need to have another project as part of our solution: An **XUnit** project.
 
 ## Setup
