@@ -71,18 +71,18 @@ Looking into things a little more, it appears that the various parts of the form
 It looks like the first online calculator may have a mistake in its computations. It's a good thing that we're making our own calculator, so that we can be more confident about our results! Now that we're more confident on the formula, let's do the math in smaller steps.
 
 $$
-\begin{aligned}
-T_{wc} &= 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times (V^{0.16}) \\
-T_a &= -10 \\
-V &= 20 \\
-\\
-0.6215 \times (-10) &= -6.215 \text{Conduction & Radiation} \\
-11.37 \times ((20)^{0.16}) &= 18.36 \text{Evaporation} \\
-0.3965 \times (-10) \times ((20)^{0.16}) &= -6.40 \text{Convection} \\
-\\
-T_{wc} &= 13.12 + (-6.215) - (18.36) + (-6.40)
-T_{wc} &= -17.855
-\end{aligned}
+\begin{align*}
+ T_{wc} &= 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times (V^{0.16}) \\
+ T_a &= -10 \\
+ V &= 20 \\
+ \\
+ 0.6215 \times (-10) &= -6.215 & \qquad \textbf{Conduction and Radiation} \\
+ 11.37 \times ((20)^{0.16}) &= 18.36 & \qquad \textbf{Evaporation} \\
+ 0.3965 \times (-10) \times ((20)^{0.16}) &= -6.40 & \qquad \textbf{Convection} \\
+ \\
+ T_{wc} &= 13.12 + (-6.215) - (18.36) + (-6.40) \\
+ T_{wc} &= \mathbf{-17.855}
+\end{align*}
 $$
 
 
