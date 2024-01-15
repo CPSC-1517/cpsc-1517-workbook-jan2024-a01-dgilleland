@@ -33,15 +33,11 @@ global using FluentAssertions;
 
 ## Testing for WindChill
 
-In the [previous document](./ReadMe.md), we started embarking on the task of creating a class to calculate the wind chill temperature.
+In the [previous document](./ReadMe.md), we decided to create a class to calculate the wind chill temperature. Central to that is the [formula](./WindChill.md):
 
-> $$T_{wc} = 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16}$$
-> 
-> Where:
-> 
-> - $T_{wc}$ is the wind chill in degrees celsius
-> - $T_a$ is the air temperature in degrees celsius
-> - $V$ is the wind speed in kilometers per hour
+$$
+13.12 + (0.6215 \times T) - 11.37 \times (V^{0.16}) + 0.3965 \times T (V^{0.16})
+$$
 
 Let's create a bit of test data to help us check that our math is correct. We'll use the info we gathered from our [Bing AI search results](./ReadMe.md#calculating-the-wind-chill).
 
@@ -49,39 +45,20 @@ Let's create a bit of test data to help us check that our math is correct. We'll
 
 | Air Temp (°C) | Wind Speed (km/h) | Wind Chill |
 | :--: | :--: | :--: |
-| -10 | 20 | -18.76 |
-
-So far, that looks good. But let's check against an [online wind chill calculator](https://goodcalculators.com/wind-chill-calculator/) (chosen at random).
-
-### ¡AI, Chihuahua!
-
-[¡Ay, Chihuahua!](https://www.tellmeinspanish.com/vocab/ay-chihuahua/) - What went wrong?! Our Bing AI formula said the temperature should be `-18.76`, but the online calculator says it should be `-17.84`.
-
-![Wind Chill](./Images/WindChill.png)
-
-Is that right?! Let's try [another calculator](https://www.calculator.net/wind-chill-calculator.html?windspeed=20&windspeedunit=kmh&airtemperature=-10&airtemperatureunit=celsius&x=Calculate).
-
-![Wind Chill V2](./Images/WindChill2.png)
-
-Now it's a different result. But all three values are kinda close. It's time to do some [research](https://sciencing.com/calculate-wind-chill-factor-5981683.html). Take a moment and review the article from [Sciencing.com](https://sciencing.com/calculate-wind-chill-factor-5981683.html), then come back to this lesson.
-
-It looks like the first online calculator may have a mistake in its computations. It's a good thing that we're making our own calculator, so that we can be more confident about our results! Now that we're more confident on the formula, let's do the math in smaller steps.
-
-$$
-\begin{aligned}
-T_{wc} &= 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16} \\
-T_a &= -10 \\
-V &= 20 \\
-\end{aligned}
-$$
-
-Let that be a lesson to you! It's important to do some ***research*** and to check with reputable sources, rather than just grab the first thing that you think is right. AI is getting better, but it's still a *new* technology, and it can get some things wrong (like Math or basic facts).
-
-
+| -10 | 20 | -17.855 |
 
 ### The `WindChill` Class
 
 Parsing the arguments for our wind chill calculations is a little more involved. We could do it inside our TLP, but since the arguments are highly specific to the wind chill calculations, let's just hand-over the arguments to the `WindChill` class through a constructor to let it do the parsing and the construction of the object.
+
+- [ ] Require temperatures to be below freezing.
+- [ ] Require wind speeds to be between 0 and 70km/h
+
+### Our Final Calculation
+
+
+So far, that looks good. But we should remember that the formula is using exponents (e.g.: $T^{0.16}$) and other fractional values (e.g.: $0.6215$). Unless we employ precise rounding at certain points of our calculations, we'll probably get some failed tests. Therefore, we'll use some *aproximations* in our tests.
+
 
 ----
 

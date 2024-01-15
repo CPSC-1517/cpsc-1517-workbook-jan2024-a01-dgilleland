@@ -115,55 +115,7 @@ The double-dash (`--`) in the command indicates that the rest of the line will b
 
 ## Calculating the Wind Chill
 
-According to [Bing](#wind-chill-formula-from-bing-chat) the formula for wind chill is as follows:
 
-> $$T_{wc} = 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16}$$
->
-> Where:
->
-> - $T_{wc}$ is the wind chill in degrees celsius
-> - $T_a$ is the air temperature in degrees celsius
-> - $V$ is the wind speed in kilometers per hour
->
-> For example, if the air temperature is -10°C and the wind speed is 20 km/h, the wind chill is:
->
-> $$T_{wc} = 13.12 + 0.6215 \times (-10) - 11.37 \times 20^{0.16} + 0.3965 \times (-10) \times 20^{0.16}$$
->
-> $$T_{wc} = -18.76 \text{°C}$$
+We could, of course, just create some function to perform our wind chill calculations. It turns out that the [calculations](./WindChill.md) are a little complex. However, since we also want to allow the user to switch to different units for temperature and speed, we would be better served by creating a class &ndash; `WindChill` &ndash; to perform all of the work.
 
-We could, of course, just create some function to perform our wind child calculations. As you might gather from the calculations above, we've got a little bit of complexity (in terms of the math, at least). However, since we have the added complexity of allowing the user to switch to different units for temperature and speed, we would be better served by creating a class &ndash; `WindChill` &ndash; to perform all of the work.
-
-At this point, we're going to introduce the concept of *unit testing* to help us manage the complexity we're facing and give us better confidence that our code will work as intended. It's time to [learn about TDD](./AboutTDD.md)!
-
-----
-
-## References:
-
-### Wind Chill Formula (from Bing Chat):
-
-The wind chill is a measure of how cold it really feels outside based on the air temperature and wind speed¹. The current formula for the wind chill in celsius and km/h is:
-
-$$T_{wc} = 13.12 + 0.6215 \times T_a - 11.37 \times V^{0.16} + 0.3965 \times T_a \times V^{0.16}$$
-
-Where:
-
-- $T_{wc}$ is the wind chill in degrees celsius
-- $T_a$ is the air temperature in degrees celsius
-- $V$ is the wind speed in kilometers per hour
-
-For example, if the air temperature is -10°C and the wind speed is 20 km/h, the wind chill is:
-
-$$T_{wc} = 13.12 + 0.6215 \times (-10) - 11.37 \times 20^{0.16} + 0.3965 \times (-10) \times 20^{0.16}$$
-
-$$T_{wc} = -18.76 \text{°C}$$
-
-You can also use the [wind chill calculator](^1^) to estimate the wind chill based on the air temperature and wind speed.
-
-Source: Conversation with Bing, 2024-01-13
-(1) Wind Chill Calculator | Good Calculators. https://goodcalculators.com/wind-chill-calculator/.
-(2) Wind Chill Calculator | Good Calculators. https://goodcalculators.com/wind-chill-calculator/.
-(3) Wind Chill and Humidex Calculators - Environment Canada. https://weather.gc.ca/windchill/wind_chill_e.html.
-(4) Wind Chill Calculator. https://www.omnicalculator.com/other/wind-chill.
-(5) Wind Chill Calculator (Metric) - CalcuNation. https://www.calcunation.com/calculator/wind-chill-celsius.php.
-(6) Wind Chill - Free Math Help. https://www.freemathhelp.com/wind-chill/.
-
+At this point, we're going to introduce the concept of *unit testing* to help us manage the complexity we're facing. It will also give us better confidence that our code will work as intended. It's time to [learn about **TDD**](./AboutTDD.md)!
