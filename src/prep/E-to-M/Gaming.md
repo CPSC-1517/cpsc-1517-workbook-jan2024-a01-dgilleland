@@ -49,7 +49,7 @@ Use the following class diagram when creating your solution.
 
 ## Topic G - Raising Exceptions
 
-Here we want to add some validation on the multi-sided die to only acceps between 4 and 20 sides for a die. The solution must meet the following requirements (new requirements are in **bold**):
+Here we want to add some validation on the multi-sided die to only accept between 4 and 20 sides for a die. The solution must meet the following requirements (new requirements are in **bold**):
 
 - Should generate a random value from 1 to the number of sides on the die, when initially created and when re-rolled
 - Should get the face value of the die
