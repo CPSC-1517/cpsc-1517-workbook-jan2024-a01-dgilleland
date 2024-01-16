@@ -75,6 +75,19 @@
 - [ ] Comments/Demo of Practice Assignments
   - GitDoc Usage
   - GitDoc Typing Profile
+- [ ] Force-commit the `.code-workspace`
+
+    ```ps
+    git add ./src/A02-CPSC-1517.code-workspace --force
+    git commit -m "Force-add code workspace"
+    ```
+
+- [ ] Transition to the [004](./src/004/ReadMe.md) demo and start the intro to TLPs and TDD. Remember to add a workspace folder for 004.
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/004 ./src/004
+    ```
+
 - [ ] Lot's of Lectures!
   - **What is a Computer Program**
 - [ ] **Homework!**
