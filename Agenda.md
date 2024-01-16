@@ -1,6 +1,6 @@
 # Agenda
 
-> These are my notes on what I plan to teach in each [**upcoming class**](#jan-12). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
+> These are my notes on what I plan to teach in each [**upcoming class**](#jan-17). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ##### *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
@@ -85,24 +85,51 @@
 - [ ] Transition to the [004](./src/004/ReadMe.md) demo and start the intro to TLPs and TDD. Remember to add a workspace folder for 004.
 
     ```ps
-    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/004 ./src/004
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/004 ./src/004
     ```
 
 - [ ] Lot's of Lectures!
   - **What is a Computer Program**
+    - *A computer program is a **set of instructions** for manipulating **information**.*
+    - Information: Primitve Types & Complex Types
+      - Primitive types: Textual, Numeric, Conceptual
+      - Complex types: Classes (`class`), `struct`, `record`
+        - A class is a blueprint for creating objects.
+        - It describes what an object will *look like* and how it will *behave*.
+        - `class` is made up of fields, properties, methods and constructors.
+    - Kinds of programs:
+      - CLI (console w. UI)
+      - Desktop
+      - Web
+      - Others: (scheduled jobs, server apps, edge applications, etc.)
 - [ ] **Homework!**
   - My TLP tutorials
 
 ## Jan 17
 
+- [ ] Jump-start **004** demo (discuss the code they have)
+  - [ ] version 1 - with unit tests and simple primitive class members
+
 ## Jan 19
+
+- [ ] Resume **WindChill** demo
 
 ----
 
 ## Jan 23 (W3)
 
+- [ ] Resume **WindChill** demo
+  - [ ] version 2 - with unit tests and simple primitive class members
+
 ## Jan 24
 
+- [ ] Resume **WindChill** demo
+  - [ ] version 3 - with unit tests and simple primitive class members
+
 ## Jan 26
+
+- [ ] Demo **Fraction**
+  - [ ] version 1 - create unit tests
+- [ ] **Tip:** *Don't force abstractions by rushing to create complex data types. Begin with classes/records that have intrinsic primitive types"
 
 ----
