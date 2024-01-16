@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindChill", ".\WindChill\WindChill.csproj", "{B972D5E4-7B61-489E-8C31-EF43290C92A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindChill.Specs", "WindChill.Specs\WindChill.Specs.csproj", "{976EE2F4-6585-43B0-914B-01FCFD620E64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B972D5E4-7B61-489E-8C31-EF43290C92A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B972D5E4-7B61-489E-8C31-EF43290C92A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B972D5E4-7B61-489E-8C31-EF43290C92A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B972D5E4-7B61-489E-8C31-EF43290C92A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{976EE2F4-6585-43B0-914B-01FCFD620E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976EE2F4-6585-43B0-914B-01FCFD620E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976EE2F4-6585-43B0-914B-01FCFD620E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976EE2F4-6585-43B0-914B-01FCFD620E64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
