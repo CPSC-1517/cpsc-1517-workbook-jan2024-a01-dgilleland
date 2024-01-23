@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Using statements must be at the top of the file
 using static System.Console; // so we can use Console.WriteLine() as WriteLine()
+Clear(); // Console.Clear(); // Clearing out the console
 WriteLine("Hello, Wind-Chill!");
 // Check the arguments
 int exitCode = 0;
-if (args.Length < 2)
+if (args.Length < 2) // At a minimum, we are expecting the air temp and wind speed
 {
     if(args.Length == 0 || (args[0] != "--help" && args[0] != "-h"))
         exitCode = ProcessError("Invalid arguments.");
