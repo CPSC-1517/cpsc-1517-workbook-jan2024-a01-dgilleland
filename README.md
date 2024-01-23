@@ -35,7 +35,7 @@ gantt
     In-Class 3, Apr 17 :  milestone, 2024-04-17, 0d
 
     section Take-Home Exercises/Projects
-    Ex 1, due Jan 26 : 2024-01-12, 2024-01-26
+    Ex 1, due Jan 28 : 2024-01-12, 2024-01-28
     Ex 2, due Feb 07 : 2024-01-26, 2024-02-07
     Ex 3, due Mar 15 : 2024-02-07, 2024-03-15
     Ex 4, due Apr 04 : 2024-03-15, 2024-04-04
