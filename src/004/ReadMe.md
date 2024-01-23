@@ -66,14 +66,14 @@ If those arguments are not present, we'll display the help information and exit 
 ```cs
 // Check the arguments
 int exitCode = 0;
-if (args.Length < 2)
+if (args.Length < 2) // We expect a minimum of two arguments
 {
     if(args.Length == 0 || (args[0] != "--help" && args[0] != "-h"))
         exitCode = ProcessError("Invalid arguments.");
 
     ShowHelp();
 }
-else if (args.Length < 4)
+else if (args.Length < 5) // We allow a maximum of four arguments
 {
     // TODO: Parse the arguments and calculate the wind chill
     ForegroundColor = ConsoleColor.Yellow;

@@ -89,7 +89,7 @@ $$
 Let that be a lesson to you! It's important to do some ***research*** and to check with reputable sources, rather than just grab the first thing that you think is right. AI is getting better, but it's still a *new* technology, and [it can get some things wrong](../../docs/mynotes/AI/ReadMe.md) (like Math or basic facts).
 
 
-
+> ***Addendum:** I found another online calculator for wind chill, this time from the [**National Weather Service**](https://www.weather.gov/epz/wxcalc_windchill) (which presumably would be a good resource).*
 
 
 
