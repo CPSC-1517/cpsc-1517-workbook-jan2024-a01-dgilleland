@@ -124,13 +124,21 @@
 
 ## Jan 23 (W3)
 
-- [ ] Resume **WindChill** demo
-  - [ ] version 2 - with unit tests and simple primitive class members
+- [ ] Discuss the Take-Home Lab Exercises
+  - [ ] Ex 1 - Unit Tests & Utilities class
+- [ ] C# Review Presentations
+  - [ ] [Enums](https://programming-0101.github.io/slides/OOP-Ramp-Up/02-Enum.html)
+  - [ ] [Simple Objects](https://programming-0101.github.io/slides/OOP-Ramp-Up/03-Objects.html)
+  - [ ] [Object Inheritance](https://programming-0101.github.io/slides/OOP-Ramp-Up/04-Objects.html)
+- [ ] **Homework!**
+  - [ ] Check out these presentations on your own...
+    - [ ] [Foundational Concepts](https://programming-0101.github.io/slides/OOP-Ramp-Up/00-FoundationalConcepts.html)
+    - [ ] [Grammar](https://programming-0101.github.io/slides/OOP-Ramp-Up/01-Grammar.html)
 
 ## Jan 24
 
-- [ ] Resume **WindChill** demo
-  - [ ] version 3 - with unit tests and simple primitive class members
+- [ ] Resume [**WindChill**](./src/004) demo
+  - [ ] version 1 - with unit tests and simple primitive class members
 
 ## Jan 26
 
@@ -139,3 +147,15 @@
 - [ ] **Tip:** *Don't force abstractions by rushing to create complex data types. Begin with classes/records that have intrinsic primitive types"
 
 ----
+
+## *Future - TBD*
+
+- [ ] Resume **WindChill** demo
+  - [ ] version 2 - 
+- [ ] Resume **WindChill** demo
+  - [ ] version 3 - 
+- [ ] C# Review Presentations
+  - [ ] [Arrays](https://programming-0101.github.io/slides/OOP-Ramp-Up/05-Arrays.html)
+  - [ ] [Interfaces](https://programming-0101.github.io/slides/OOP-Ramp-Up/08-Interface.html)
+  - [ ] [EF Core](https://programming-0101.github.io/slides/OOP-Ramp-Up/15-EF-Core.html)
+  - [ ] [~~Unit Tests~~](https://programming-0101.github.io/slides/UnitTests/index.html)
