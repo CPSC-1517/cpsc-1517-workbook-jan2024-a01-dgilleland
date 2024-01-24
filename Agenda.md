@@ -127,16 +127,16 @@
 - [ ] Discuss the Take-Home Lab Exercises
   - [ ] Ex 1 - Unit Tests & Utilities class
 - [ ] C# Review Presentations
+    - [ ] [Foundational Concepts](https://programming-0101.github.io/slides/OOP-Ramp-Up/00-FoundationalConcepts.html)
   - [ ] [Enums](https://programming-0101.github.io/slides/OOP-Ramp-Up/02-Enum.html)
-  - [ ] [Simple Objects](https://programming-0101.github.io/slides/OOP-Ramp-Up/03-Objects.html)
 - [ ] **Homework!**
   - [ ] Check out these presentations on your own...
-    - [ ] [Foundational Concepts](https://programming-0101.github.io/slides/OOP-Ramp-Up/00-FoundationalConcepts.html)
     - [ ] [Grammar](https://programming-0101.github.io/slides/OOP-Ramp-Up/01-Grammar.html)
 
 ## Jan 24
 
 - [ ] C# Review Presentations
+  - [ ] [Simple Objects](https://programming-0101.github.io/slides/OOP-Ramp-Up/03-Objects.html)
   - [ ] [Object Inheritance](https://programming-0101.github.io/slides/OOP-Ramp-Up/04-Objects.html)
 - [ ] Resume [**WindChill**](./src/004) demo
   - [ ] version 1 - with unit tests and simple primitive class members
@@ -145,7 +145,7 @@
 
 - [ ] Demo **Fraction**
   - [ ] version 1 - create unit tests
-- [ ] **Tip:** *Don't force abstractions by rushing to create complex data types. Begin with classes/records that have intrinsic primitive types"
+- [ ] **Tip:** *Don't force abstractions by rushing to create complex data types. Begin with classes/records that have intrinsic primitive types.*
 
 ----
 
