@@ -129,7 +129,6 @@
 - [ ] C# Review Presentations
   - [ ] [Enums](https://programming-0101.github.io/slides/OOP-Ramp-Up/02-Enum.html)
   - [ ] [Simple Objects](https://programming-0101.github.io/slides/OOP-Ramp-Up/03-Objects.html)
-  - [ ] [Object Inheritance](https://programming-0101.github.io/slides/OOP-Ramp-Up/04-Objects.html)
 - [ ] **Homework!**
   - [ ] Check out these presentations on your own...
     - [ ] [Foundational Concepts](https://programming-0101.github.io/slides/OOP-Ramp-Up/00-FoundationalConcepts.html)
@@ -137,6 +136,8 @@
 
 ## Jan 24
 
+- [ ] C# Review Presentations
+  - [ ] [Object Inheritance](https://programming-0101.github.io/slides/OOP-Ramp-Up/04-Objects.html)
 - [ ] Resume [**WindChill**](./src/004) demo
   - [ ] version 1 - with unit tests and simple primitive class members
 
