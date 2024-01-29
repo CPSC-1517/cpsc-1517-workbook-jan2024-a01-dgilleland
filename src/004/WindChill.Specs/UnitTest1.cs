@@ -1,3 +1,5 @@
+using Xunit.Sdk;
+
 namespace WindChill.Specs;
 // To re-run tests, press [ctrl] + ; then a
 public class WindChill_Should
@@ -45,14 +47,14 @@ public class WindChill_Should
     {
         // Arrange
         WindChill sut = new(-10, 20);
-        double expected = -17.855; // From our table of test data
+        double expected = -17.9; // From our table of test data
         // Act
         var actual = sut.FeelsLike;
         // Assert
         actual.Should().Be(expected);
     }
 
-    [Fact]
+    [Fact()]
     public void Represent_WindChill_As_Text()
     {
         // Arrange
@@ -64,18 +66,99 @@ public class WindChill_Should
         actual.Should().Be(expected);
     }
 
-    [Fact(Skip = "Demo In Class")]
-    public void Reject_Temperature_Above_Freezing() {}    
+    [Fact()]
+    public void Reject_Temperature_Above_Freezing()
+    {
+        // Arrange
+        Action act = () => new WindChill(1, 20);
+        //           \/    \__________________/
+        //            |      |_   <-- Return Value
+        //            |_  <-- parameter-less inputs (nothing being input)
+        //           \________________________/  <-- A shorthand function declaration
+        //    act()
+        // Act
+        // Assert
+        act.Should().Throw<ArgumentOutOfRangeException>();
+    }
 
-    [Fact(Skip = "Demo In Class")]
-    public void Reject_WindSpeed_Below_10kph() {}
-    
-    [Fact(Skip = "Demo In Class")]
-    public void Reject_WindSpeed_Over_70kph() {}
-    
-    [Fact(Skip = "Demo In Class")]
-    public void Represent_Temperature_As_Farenhiet() {}    
-    
-    [Fact(Skip = "Demo In Class")]
-    public void Represent_WindSpeed_As_MilesPerHour() {}
+    [Fact]
+    public void Reject_WindSpeed_Below_10kph()
+    {
+        // Arrange
+        Action act = () => new WindChill(-5, 9);
+        // Act
+        // Assert
+        act.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*Wind speeds below 10 kph are not allowed*");
+        // Note the * at the start/end of the message - those are "wild cards"
+    }
+
+    [Fact]
+    public void Reject_WindSpeed_Over_70kph()
+    {
+        // Arrange
+        Action act = () => new WindChill(0, 71);
+        // Act/Assert
+        act.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*Wind speeds above 70 kph are not allowed*");
+    }
+
+    [Fact]
+    public void Represent_Temperature_As_Farenhiet()
+    {
+        // Arrange
+        WindChill sut = new(32, 'F', 10, "m/h");
+
+        // Act
+        var actualTemp = sut.AirTemperature;
+        var actualUnits = sut.TemperatureUnits;
+
+        // Assert
+        actualTemp.Should().Be(32);
+        actualUnits.Should().Be('F');
+    }
+
+    [Fact]
+    public void Represent_WindSpeed_As_MilesPerHour()
+    {
+        // Arrange
+        WindChill sut = new(32, 'F', 10, "m/h");
+
+        // Act
+        var actualSpeed = sut.WindSpeed;
+        var actualUnits = sut.WindSpeedUnits;
+
+        // Assert
+        actualSpeed.Should().Be(10);
+        actualUnits.Should().Be("m/h");
+    }
+
+    [Theory]
+    [InlineData(-10, 'C', 20, "km/h")]
+    [InlineData(32, 'F', 10, "km/h")]
+    public void Represent_WindChill_Inputs_With_Explicit_Units(double givenAir, char givenTempUnits, double givenWind, string givenWindUnits)
+    {
+        // Arrange
+        // Act
+        WindChill sut = new(givenAir, givenTempUnits, givenWind, givenWindUnits);
+
+        // Assert
+        sut.AirTemperature.Should().Be(givenAir);
+        sut.TemperatureUnits.Should().Be(givenTempUnits);
+
+        sut.WindSpeed.Should().Be(givenWind);
+        sut.WindSpeedUnits.Should().Be(givenWindUnits);
+    }
+
+    [Theory]
+    [InlineData(-10, 'C', 20, "km/h", -17.9)]
+    [InlineData(32, 'F', 10, "m/h", 23.7)]
+    public void Calculate_WindChill_From_Explicit_Units(double givenAir, char givenTempUnits, double givenWind, string givenWindUnits, double expectedWindChill)
+    {
+        // Arrange
+        WindChill sut = new(givenAir, givenTempUnits, givenWind, givenWindUnits);
+
+        // Act
+        var actual = sut.FeelsLike;
+        // Assert
+        actual.Should().Be(expectedWindChill);
+    }
 }
