@@ -147,6 +147,10 @@
 
 ----
 
+## Extra Resources
+
+- [ ] [Learn C# through Console Games](https://dev.to/zacharypatten/learn-c-through-console-games-49kk) and [**More C# Console Games**](https://dev.to/zacharypatten/more-c-console-games-27bg)
+
 ## *Future - TBD*
 
 - [ ] Demo **Fraction**
