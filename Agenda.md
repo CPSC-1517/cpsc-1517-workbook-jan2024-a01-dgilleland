@@ -147,6 +147,18 @@
 
 ----
 
+## Jan 30 (W4)
+
+- [ ] Resume Assorted Demos
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/005 ./src/005
+    ```
+
+
+
+----
+
 ## Extra Resources
 
 - [ ] [Learn C# through Console Games](https://dev.to/zacharypatten/learn-c-through-console-games-49kk) and [**More C# Console Games**](https://dev.to/zacharypatten/more-c-console-games-27bg)
