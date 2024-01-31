@@ -50,4 +50,29 @@ public class Angle_Should
         // Assert
         actual.Should().Be(expectedGrads);
     }
+
+    [Fact]
+    public void Express_As_Text()
+    {
+        // Arrange
+        Angle sut = new(45);
+        // Act
+        string actual = sut.ToString();
+        // Assert
+        actual.Should().Be("45°"); // ° in unicode is '\u00B0'
+    }
+
+    [Theory]
+    [InlineData(0, 0)]
+    [InlineData(Math.PI, 180)]
+    public void Create_Angle_From_Radians_Value(double givenRadians, double expectedDegrees)
+    {
+        Angle actual = Angle.FromRadians(givenRadians);
+        actual.Degrees.Should().Be(expectedDegrees);
+    }
+
+    /* Homework
+    [Theory] - Determine_AngleType
+    
+    */
 }

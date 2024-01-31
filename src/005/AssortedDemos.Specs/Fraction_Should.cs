@@ -90,4 +90,17 @@ public class Fraction_Should
         actual.Should().BeFalse();
         output.Should().BeNull();
     }
+
+    /* Game Programmers - C# Bonus Section */
+    [Fact]
+    public void Multiply_With_Another_Fraction()
+    {
+        // Arrange
+        Fraction first = new(1,2), second = new(3,5);
+        // Act
+        Fraction actual = first * second;
+        // Assert
+        actual.Numerator.Should().Be(3);
+        actual.Denominator.Should().Be(10);
+    }
 }

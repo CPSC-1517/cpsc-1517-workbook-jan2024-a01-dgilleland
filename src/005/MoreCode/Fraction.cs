@@ -43,4 +43,13 @@ public class Fraction
             return false;
         }
     }
+
+    #region Operator Overloads
+    public static Fraction operator *(Fraction a, Fraction b)
+    {
+        int num = a.Numerator * b.Numerator;
+        int denom = a.Denominator * b.Denominator;
+        return new(num, denom);
+    }
+    #endregion
 }
