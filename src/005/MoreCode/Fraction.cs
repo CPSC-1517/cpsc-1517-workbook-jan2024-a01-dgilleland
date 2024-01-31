@@ -29,4 +29,18 @@ public class Fraction
         int denom = int.Parse(parts[1]);
         return new(num, denom);
     }
+
+    public static bool TryParse(string given, out Fraction parsed)
+    {
+        try
+        {
+            parsed = Parse(given);
+            return true;
+        }
+        catch (System.Exception)
+        {
+            parsed = default;
+            return false;
+        }
+    }
 }
