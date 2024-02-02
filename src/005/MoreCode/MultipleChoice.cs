@@ -12,11 +12,18 @@ public class MultipleChoice
 
     public Answer Choice { get; }
 
+    /// <summary>
+    /// Generate a MutlipleChoice where the answer is blank (<see cref="Answer.NOT_ANSWERED"/> )
+    /// </summary>
     public MultipleChoice()
     {
         Choice = Answer.NOT_ANSWERED;
     }
 
+    /// <summary>
+    /// Generate a MultipleChoice object with the chosen answer
+    /// </summary>
+    /// <param name="chosenAnswer">An enum value from <see cref="Answer"/> type.</param>
     public MultipleChoice(Answer chosenAnswer)
     {
         Choice = chosenAnswer;
