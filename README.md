@@ -36,7 +36,7 @@ gantt
 
     section Take-Home Exercises/Projects
     Ex 1, due Jan 28 : 2024-01-12, 2024-01-28
-    Ex 2, due Feb 07 : 2024-01-26, 2024-02-07
+    Ex 2, due Feb 09 : 2024-01-26, 2024-02-09
     Ex 3, due Mar 15 : 2024-02-07, 2024-03-15
     Ex 4, due Apr 04 : 2024-03-15, 2024-04-04
     Proj Deliverable 1, due Apr 12 : 2024-03-15, 2024-04-12
