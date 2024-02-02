@@ -5,7 +5,10 @@ using static System.Console;
 
 if (args.Length > 0) // come back to fix this
 {
-    DemoFraction.Run(args);
+    if(args[0] == "-f")
+        DemoFraction.Run(args);
+    else if(args[0] == "-q")
+        DemoScantron.Run(args);
 }
 else
 {
