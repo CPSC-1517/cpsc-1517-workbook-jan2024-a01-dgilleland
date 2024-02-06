@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "005"
+		},
+		{
+			"path": "../Games/ShipBattles"
 		}
 	],
 	"settings": {}
