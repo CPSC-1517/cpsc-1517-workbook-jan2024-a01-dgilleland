@@ -21,8 +21,3 @@ public class Player
         ShipProfiles.Add(new("Carrier", 5, ShipStatus.Undamaged));
     }
 }
-
-public enum ShipStatus { Undamaged, Damaged, Sunk }
-
-public record ShipProfile(string Name, int Length, ShipStatus Status);
-
