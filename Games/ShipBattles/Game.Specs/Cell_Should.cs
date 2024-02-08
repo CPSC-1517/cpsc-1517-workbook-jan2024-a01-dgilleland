@@ -13,4 +13,17 @@ Cell_Should
     - Reject_Invalid_Column
     - Reject_Invalid_Row
     */
+    [Fact]
+    public void Construct_With_Column_Row_Status()
+    {
+        
+    }
+
+    [Fact]
+    public void Reject_Invalid_Column()
+    {}
+
+    [Fact]
+    public void Reject_Invalid_Row()
+    {}
 }
