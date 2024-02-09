@@ -1,7 +1,6 @@
 namespace Game.Specs;
 using static Game.CellStatus;
 using static Game.CellColumn;
-using System.Diagnostics;
 
 /*
 Unit tests always test the behaviour of your code
