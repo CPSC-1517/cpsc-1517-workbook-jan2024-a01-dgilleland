@@ -1,6 +1,10 @@
-using System.Text;
-
 namespace Game;
+/*
+    This file holds an assorted set of enumerations and record types related to cells in the Grid.
+    Because the types are so simple while being closely related, they are being kept in this single file for clarity/cross-referencing.
+ */
+
+using System.Text;
 
 public enum CellStatus { Blank, Hit, Miss }
 public enum CellColumn { A = 1, B, C, D, E, F, G, H, I, J }
