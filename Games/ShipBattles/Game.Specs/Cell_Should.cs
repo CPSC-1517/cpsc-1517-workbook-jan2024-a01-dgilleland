@@ -1,4 +1,7 @@
 namespace Game.Specs;
+using static Game.CellStatus;
+using static Game.CellColumn;
+using System.Diagnostics;
 
 /*
 Unit tests always test the behaviour of your code
@@ -16,14 +19,25 @@ Cell_Should
     [Fact]
     public void Construct_With_Column_Row_Status()
     {
-        
+        Cell sut = new(A, 4, Hit);
+        sut.Status.Should().Be(Hit);
     }
 
-    [Fact]
-    public void Reject_Invalid_Column()
-    {}
+    [Theory]
+    [InlineData(0)]
+    [InlineData(11)]
+    public void Reject_Invalid_Column(int given)
+    {
+        Action act = () => new Cell(given, 4, Blank);
+        act.Should().Throw<ArgumentOutOfRangeException>();
+    }
 
-    [Fact]
-    public void Reject_Invalid_Row()
-    {}
+    [Theory]
+    [InlineData(0)]
+    [InlineData(11)]
+    public void Reject_Invalid_Row(int given)
+    {
+        Action act = () => new Cell(A, given, Blank);
+        act.Should().Throw<ArgumentOutOfRangeException>();
+    }
 }
