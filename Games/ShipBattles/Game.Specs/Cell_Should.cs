@@ -40,3 +40,4 @@ Cell_Should
         act.Should().Throw<ArgumentOutOfRangeException>();
     }
 }
+
