@@ -155,6 +155,16 @@
     pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/005 ./src/005
     ```
 
+----
+
+## Feb 9
+
+- [ ] Comments on Quiz 1
+- [ ] Blazor Web Application Intro
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/006 ./src/006
+    ```
 
 
 ----
