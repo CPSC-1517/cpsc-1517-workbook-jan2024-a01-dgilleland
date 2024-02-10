@@ -18,8 +18,8 @@ public record CellRow
         Value = value;
     }
     public static implicit operator CellRow(int value) => new(value);
+    public static implicit operator int(CellRow row) => row.Value;
 }
-
 public record Cell(CellColumn Col, CellRow Row, CellStatus Status = CellStatus.Blank)
 {
     public Cell(int col, CellRow row, CellStatus status):this(EnumParser.Parse<CellColumn>(col), row, status){}

@@ -33,7 +33,7 @@ public class Grid_Should
         ShipProfile givenShip = new("Sub", 3);
         Cell location = new(CellColumn.A, 1);
         // Act
-        Ship actual = sut.Place(givenShip, location);
+        Ship actual = sut.Place(givenShip, location, Grid.Direction.Horizontal);
         // Assert
         actual.Should().NotBeNull();
     }
@@ -46,7 +46,7 @@ public class Grid_Should
         ShipProfile givenShip = new("Sub", 3);
         Cell location = new(CellColumn.A, 1);
         // Act
-        Ship actual = sut.Place(givenShip, location);
+        Ship actual = sut.Place(givenShip, location, Grid.Direction.Horizontal);
         // Assert
         // TODO: Make sure that the location on the Grid gets filled with the ship and that the ship's location matches that of the Grid
     }
