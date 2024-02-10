@@ -7,7 +7,7 @@ public static class EnumParser
         return (TEnum) Enum.Parse(typeof(TEnum), text);
     }
 
-    public static bool TryParse<TEnum>(string text, out TEnum result)
+    public static bool TryParse<TEnum>(string text, out TEnum? result) where TEnum : struct, Enum
     {
         try
         {
@@ -16,7 +16,7 @@ public static class EnumParser
         }
         catch
         {   
-            result = default;
+            result = default!;
             return false;
         }
     }

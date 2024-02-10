@@ -1,3 +1,3 @@
 namespace Game;
 
-public record ShipProfile(string Name, int Length, ShipStatus Status);
+public record ShipProfile(TrimmedText Name, int Length, ShipStatus Status);

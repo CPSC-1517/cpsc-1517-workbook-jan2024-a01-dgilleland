@@ -12,8 +12,9 @@ Player_Should
     [Fact]
     public void Construct_With_PlayerName()
     {
+        TrimmedText expected = "Player Won";
         Player sut = new("Player Won");
-        sut.Name.Should().Be("Player Won");
+        sut.Name.Should().Be(expected);
     }
 
     [Fact]
@@ -32,13 +33,20 @@ Player_Should
         sut.ShipProfiles.Should().BeEquivalentTo(expected);
     }
 
-    [Fact(Skip = "TODO")]
+    [Fact]
     public void Construct_With_Grid()
     {
+        Player sut = new("Player Won");
+        sut.Grid.Should().NotBeNull();
     }
 
-    [Fact(Skip = "TODO")]
-    public void Reject_Blank_PlayerName()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("  ")]
+    public void Reject_Blank_PlayerName(string givenName)
     {
+        Action act = () => new Player(givenName);
+        act.Should().Throw<ArgumentNullException>();
     }
 }

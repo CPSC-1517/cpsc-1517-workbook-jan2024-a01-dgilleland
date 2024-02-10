@@ -2,12 +2,16 @@
 
 public class Player
 {
-    public string Name{get;}
+    public TrimmedText Name{get;}
     public int ShipCount = 5;
     public List<ShipProfile> ShipProfiles { get; }
-    public Player(string name)
+    public Grid Grid { get; }
+    public Player(TrimmedText name)
     {
+        if(string.IsNullOrWhiteSpace(name))
+            throw new ArgumentNullException("Player name information cannot be blank");
         Name = name;
+        Grid = new();
         ShipProfiles = new();
         BuildShips();
     }
