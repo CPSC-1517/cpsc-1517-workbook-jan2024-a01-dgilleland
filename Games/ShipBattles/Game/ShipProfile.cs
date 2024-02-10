@@ -7,5 +7,8 @@ public record ShipProfile(TrimmedText Name, NaturalInt Length, ShipStatus Status
 
 public class Ship
 {
-
+    public Ship(ShipProfile profile, params Cell[] cellLocations)
+    {
+        
+    }
 }

@@ -2,7 +2,7 @@ namespace Game.Specs;
 
 public class Grid_Should
 {
-     #region Grid Construction
+    #region Grid Construction
     [Fact]
     public void Construct_With_10x10_Status_Array()
     {
@@ -25,5 +25,30 @@ public class Grid_Should
         Ship Place(ShipProfile ship, Cell location)
         Ship[] Place(ShipProfile[] ships)
      */
+    [Fact]
+    public void Create_Ship_When_Placing_At_Location()
+    {
+        // Arrange
+        Grid sut = new();
+        ShipProfile givenShip = new("Sub", 3);
+        Cell location = new(CellColumn.A, 1);
+        // Act
+        Ship actual = sut.Place(givenShip, location);
+        // Assert
+        actual.Should().NotBeNull();
+    }
+
+    [Fact(Skip = "TODO")]
+    public void Place_Ship_At_Location()
+    {
+        // Arrange
+        Grid sut = new();
+        ShipProfile givenShip = new("Sub", 3);
+        Cell location = new(CellColumn.A, 1);
+        // Act
+        Ship actual = sut.Place(givenShip, location);
+        // Assert
+        // TODO: Make sure that the location on the Grid gets filled with the ship and that the ship's location matches that of the Grid
+    }
     #endregion
 }

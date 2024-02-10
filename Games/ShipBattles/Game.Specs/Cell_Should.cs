@@ -16,6 +16,12 @@ Cell_Should
     - Reject_Invalid_Row
     */
     [Fact]
+    public void Construct_With_Default_Status()
+    {
+        Cell sut = new(A, 4);
+        sut.Status.Should().Be(Blank);
+    }
+    [Fact]
     public void Construct_With_Column_Row_Status()
     {
         Cell sut = new(A, 4, Hit);
