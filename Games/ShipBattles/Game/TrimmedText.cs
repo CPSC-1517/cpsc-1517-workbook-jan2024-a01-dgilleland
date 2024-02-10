@@ -1,6 +1,7 @@
 namespace Game;
 
-public record TrimmedText{
+public record TrimmedText
+{
     public string Value{ get; }
     public TrimmedText(string value)
     {
