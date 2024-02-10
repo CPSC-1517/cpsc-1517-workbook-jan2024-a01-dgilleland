@@ -1,4 +1,6 @@
-﻿namespace Game;
+﻿using static Game.Grid;
+
+namespace Game;
 
 public class Player
 {
@@ -23,5 +25,18 @@ public class Player
         ShipProfiles.Add(new("Destroyer", 3, ShipStatus.Undamaged));
         ShipProfiles.Add(new("Battleship", 4, ShipStatus.Undamaged));
         ShipProfiles.Add(new("Carrier", 5, ShipStatus.Undamaged));
+    }
+    
+    public Ship Place(ShipProfile profile, Cell startLocation, Direction direction)
+    {
+        List<Cell> cells = new();
+        cells.Add(startLocation);
+        if(direction == Direction.Horizontal)
+            for(int size = 1; size < profile.Length; size++)
+                cells.Add(new(startLocation.Col, size + startLocation.Row));
+        else
+            for(int size = 1; size < profile.Length; size++)
+                cells.Add(new(size + startLocation.Col, startLocation.Row));
+        return new Ship(profile, cells.ToArray());
     }
 }
