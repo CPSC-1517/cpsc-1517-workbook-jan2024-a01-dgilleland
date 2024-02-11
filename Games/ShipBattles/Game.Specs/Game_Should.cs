@@ -70,7 +70,7 @@ Game_Should
     public void Reveal_No_Shots_Fired(string givenName)
     {
         Game sut = TwoPlayerRandomGame;
-        int actual = sut.ShotsFired(PlayerOne);
+        int actual = sut.ShotsFired(givenName);
         actual.Should().Be(0);
     }
 
