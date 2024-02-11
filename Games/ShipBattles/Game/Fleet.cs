@@ -1,5 +1,4 @@
 namespace Game;
-
 public class Fleet
 {
     #region Properties, Fields, Constants
