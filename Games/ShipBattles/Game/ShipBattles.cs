@@ -8,6 +8,8 @@ public class ShipBattles
     public TrimmedText PlayerOne => _PlayerOne.Name;
     public TrimmedText PlayerTwo => _PlayerTwo.Name;
     public bool IsReadyToPlay { get; private set; }
+    public bool Over => false;
+    public string? Winner => null;
 
     public ShipBattles(string playerOne, string playerTwo)
     {

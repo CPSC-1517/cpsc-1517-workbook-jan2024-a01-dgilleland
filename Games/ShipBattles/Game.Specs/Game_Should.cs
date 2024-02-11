@@ -9,14 +9,23 @@ Game_Should
     - 
     - Identify_Winning_Player
     */
+    #region Test Helper Fields/Properties
+    #region Private fields and constants
     const string PlayerOne = "Player Won";
     const string PlayerTwo = "Player Too";
     static IEnumerable<int> Sequence = Predictable_For_Next_1_To_11;
+    #endregion
+
+    #region Properties for SUT testing
+    private Game TwoPlayerRandomGame => new(PlayerOne, PlayerTwo);
+    private Game TwoPlayerPredictableGame => new(PlayerOne, PlayerTwo, _Seed);
+    #endregion
+    #endregion
 
     [Fact]
     public void Construct_With_Two_Players()
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         string actualPlayerOne = 
         sut.PlayerOne;
         string actualPlayerTwo = sut.PlayerTwo;
@@ -26,16 +35,30 @@ Game_Should
     }
 
     [Fact]
+    public void Not_Be_Over()
+    {
+        var sut = TwoPlayerRandomGame;
+        sut.Over.Should().BeFalse();
+    }
+
+    [Fact]
+    public void Not_Have_Winner_At_Start()
+    {
+        var sut = TwoPlayerRandomGame;
+        sut.Winner.Should().BeNull();
+    }
+
+    [Fact]
     public void Not_Be_Ready_At_First()
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         sut.IsReadyToPlay.Should().BeFalse();
     }
 
     [Fact]
     public void Ready_To_Play_After_Setup()
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         sut.Setup();
         sut.IsReadyToPlay.Should().BeTrue();
     }
@@ -43,7 +66,7 @@ Game_Should
     [Fact]
     public void Reveal_Empty_Grid_Player_One_After_Construction()
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         Grid expected = new Grid();
         Grid actual = sut.RevealFleetPositions(PlayerOne);
         actual.Should().BeEquivalentTo(expected);
@@ -54,7 +77,7 @@ Game_Should
     [InlineData(PlayerTwo)]
     public void Reveal_No_Shots_Fired(string givenName)
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         int actual = sut.ShotsFired(PlayerOne);
         actual.Should().Be(0);
     }
@@ -62,8 +85,14 @@ Game_Should
     [Fact]
     public void Use_Shared_Random_By_Default()
     {
-        Game sut = new(PlayerOne, PlayerTwo);
+        Game sut = TwoPlayerRandomGame;
         sut.Random.Should().Be(Random.Shared);
+    }
+
+    [Fact(Skip = "TODO: Plan out how I might handle tracking randomness through the game...")]
+    public void Not_Have_Shared_Sequence_Logger()
+    {
+        
     }
 
     [Fact]
@@ -80,6 +109,4 @@ Game_Should
         // Assert 2
         actualSequence.Should().BeEquivalentTo(expected);
     }
-
-
 }
