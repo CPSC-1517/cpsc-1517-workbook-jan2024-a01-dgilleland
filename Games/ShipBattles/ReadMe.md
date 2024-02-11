@@ -29,7 +29,9 @@ Often, when we need strings, we wind up requiring that the text be non-null/non-
 
 #### NaturalInt
 
+This class represents whole numbers greater than zero (often referred to as *Natural numbers* - see the [comments under the Research Notes below](#natural-numbers-and-zero)).
 
+----
 
 ### Research Notes
 
