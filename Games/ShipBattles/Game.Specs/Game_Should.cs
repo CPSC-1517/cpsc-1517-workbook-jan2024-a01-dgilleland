@@ -7,7 +7,6 @@ public class Game_Should
     /*
 Game_Should
     - 
-    - Identify_Winning_Player
     */
     #region Test Helper Fields/Properties
     #region Private fields and constants
@@ -22,6 +21,7 @@ Game_Should
     #endregion
     #endregion
 
+    #region Construct Game (before Setup)
     [Fact]
     public void Construct_With_Two_Players()
     {
@@ -54,15 +54,7 @@ Game_Should
         Game sut = TwoPlayerRandomGame;
         sut.IsReadyToPlay.Should().BeFalse();
     }
-
-    [Fact]
-    public void Ready_To_Play_After_Setup()
-    {
-        Game sut = TwoPlayerRandomGame;
-        sut.Setup();
-        sut.IsReadyToPlay.Should().BeTrue();
-    }
-
+    
     [Fact]
     public void Reveal_Empty_Grid_Player_One_After_Construction()
     {
@@ -89,12 +81,6 @@ Game_Should
         sut.Random.Should().Be(Random.Shared);
     }
 
-    [Fact(Skip = "TODO: Plan out how I might handle tracking randomness through the game...")]
-    public void Not_Have_Shared_Sequence_Logger()
-    {
-        
-    }
-
     [Fact]
     public void Allow_Random_Number_Generator_Injection()
     {
@@ -109,4 +95,23 @@ Game_Should
         // Assert 2
         actualSequence.Should().BeEquivalentTo(expected);
     }
+    #endregion
+
+    #region Game Immediately After Setup
+    [Fact]
+    public void Ready_To_Play_After_Setup()
+    {
+        Game sut = TwoPlayerRandomGame;
+        sut.Setup();
+        sut.IsReadyToPlay.Should().BeTrue();
+    }
+    #endregion
+
+    #region Queue/Sort
+    [Fact(Skip = "TODO: Plan out how I might handle tracking randomness through the game...")]
+    public void Not_Have_Shared_Sequence_Logger()
+    {
+        
+    }
+    #endregion
 }
