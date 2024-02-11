@@ -4,6 +4,13 @@
 
 ![](./WhiteBoardPlan.png)
 
+## Playing
+
+> ***Note:** Helpful for manual testing.*
+
+The game can be played in the console using the [`Console.Game` program](./Console.Game/Program.cs).
+
+
 ----
 
 ## Appendix
