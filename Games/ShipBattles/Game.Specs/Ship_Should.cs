@@ -1,4 +1,5 @@
 namespace Game.Specs;
+using static Game.CellColumn;
 
 public class Ship_Should
 {
@@ -7,24 +8,27 @@ public class Ship_Should
     {
         // Arrange
         ShipProfile givenProfile = new("Cruiser", 2);
-        Cell givenLocation1 = new(CellColumn.A, 1);
-        Cell givenLocation2 = new(CellColumn.A, 2);
+        CellLocation givenLocation1 = new(A, 1);
+        CellLocation givenLocation2 = new(A, 2);
         // Act
         Ship actual = new(givenProfile, givenLocation1, givenLocation2);
         // Assert
         actual.Should().NotBeNull();
     }
-
-    private static IEnumerable<Cell> CreateCells(CellColumn col, params int[] rows)
+    [Fact]
+    public void Be_Undamaged_After_Construction()
+    {
+        Ship sut = new(new(Fleet.PTBoat, 2), new(A,1), new (A,2));
+        sut.Status.Should().Be(ShipStatus.Undamaged);
+    }
+    
+    #region Helper methods
+    private static IEnumerable<CellLocation> CreateCells(CellColumn col, params int[] rows)
     {
         foreach(int row in rows)
             yield return new(col, row);
     }
-    private static IEnumerable<Cell> CreateCells(CellColumn col, CellStatus status, params int[] rows)
-    {
-        foreach(int row in rows)
-            yield return new(col, row, status);
-    }
+    #endregion
 
     [Theory]
     [InlineData(1)]
@@ -39,26 +43,15 @@ public class Ship_Should
         act.Should().Throw<ArgumentOutOfRangeException>();
     }
 
-    [Theory]
-    [InlineData(CellStatus.Hit)]
-    [InlineData(CellStatus.Miss)]
-    public void Reject_Construction_Within_Targeted_Cells(CellStatus given)
-    {
-        // Arrange
-        ShipProfile givenProfile = new("Cruiser", 2);
-        var givenCells = CreateCells(CellColumn.A, given, 1, 2);
-        Action act = () => new Ship(givenProfile, givenCells.ToArray());
-        // Act/Assert
-        act.Should().Throw<GameRuleException>().WithMessage("*Ship cannot be created on a cell that has already been targetted as a hit or miss*");
-    }
+
     /*
 Ship_Should
     - Construct_Within_Blank_Cells
-    - 
+    -
     - Reject_Non_Adjacent_Cells_Horizontally
     - Reject_Non_Adjacent_Cells_Vertically
     - Reject_Disjointed_Cells
-    - 
+    -
 
     */
 }

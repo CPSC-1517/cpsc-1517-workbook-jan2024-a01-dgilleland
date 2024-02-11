@@ -7,11 +7,18 @@ public record ShipProfile(TrimmedText Name, NaturalInt Length, ShipStatus Status
 
 public class Ship
 {
-    public Ship(ShipProfile profile, params Cell[] cellLocations)
+    public IEnumerable<CellLocation> Location { get; }
+    private ShipProfile _Profile;
+    public ShipStatus Status => _Profile.Status;
+    public TrimmedText Name => _Profile.Name;
+
+    public Ship(ShipProfile profile, params CellLocation[] cellLocations)
     {
         if(profile.Length != cellLocations.Length)
             throw new ArgumentOutOfRangeException();
-        if(cellLocations.Any(x => x.Status != CellStatus.Blank))
-            throw new GameRuleException("Ship cannot be created on a cell that has already been targetted as a hit or miss");
+        // if(cellLocations.Any(x => x.Status != CellStatus.Blank))
+        //     throw new GameRuleException("Ship cannot be created on a cell that has already been targetted as a hit or miss");
+        Location = cellLocations;
+        _Profile = profile with { Ship = this };
     }
 }
