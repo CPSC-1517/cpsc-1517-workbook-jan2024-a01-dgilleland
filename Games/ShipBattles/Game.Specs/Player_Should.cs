@@ -104,4 +104,8 @@ Player_Should
         sut.IsReady.Should().BeTrue();
     }
     #endregion
+/* Queue:
+    - Reject_Overlapping_Ship_Placement
+    
+*/
 }

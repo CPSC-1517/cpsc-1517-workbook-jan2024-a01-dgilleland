@@ -11,6 +11,12 @@
 The game can be played in the console using the [`Console.Game` program](./Console.Game/Program.cs).
 
 
+## Design
+
+### Randomness
+
+Randomness is needed in the game in terms of ...
+
 ----
 
 ## Appendix
