@@ -1,0 +1,35 @@
+﻿@inherits LayoutComponentBase
+@* Everything in this file is injected into the <body> tag*@
+@* Semantic HTML is the use of HTML tags that carry specific meaning. The use of HTML tags with specific
+purposes/meaning allows us to properly (meaningfully) describe the content of our page. *@
+<nav class="container-fluid">
+    <ul>
+        <li><img alt="logo" src="/icons8-internet-laces-72.png" /></li>
+        <li><strong>Blazor 8</strong></li>
+    </ul>
+    <ul>
+        <li><a href="/"><i class="las la-home"></i> Home</a></li>
+        <li><a href="/weather"><i class="las la-wind"></i> Weather</a></li>
+        <li><a href="/counter"><i class="las la-skiing-nordic"></i> Counter</a></li>
+        <li><a href="#" role="button"><i class="las la-sitemap"></i> Button</a></li>
+    </ul>
+</nav>
+<main class="container">
+    @Body
+</main>
+<footer class="container" data-theme="dark">
+    <hr />
+    <ul>
+        <li>Based on the Blazor 8 (Empty) template.</li>
+        <li>Using the <a href="https://picocss.com/" target="_blank">PicoCSS</a> No-Class Stylesheet.</li>
+        <li><a target="_blank" href="https://icons8.com/icon/eTJ3Q9REJ1nH/internet">Internet</a> icon by <a
+                target="_blank" href="https://icons8.com">Icons8</a>.</li>
+    </ul>
+    <p>&copy; 2024 - Instructor Dan</p>
+</footer>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

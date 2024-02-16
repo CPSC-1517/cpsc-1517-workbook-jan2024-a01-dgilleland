@@ -1,0 +1,50 @@
+﻿@page "/counter"
+@*^^^ This is a page directive, identifying the URL *@
+@* This is an example of a 
+   multi-line comment in Razor (Blazor).
+   Inside of a .razor file, we have the regular
+   HTML/CSS/JS code as well as C#.
+   The @ symbol does a language-context-switching
+   for the compiler. *@
+
+@rendermode InteractiveServer
+@* ^^^^ Blaor support different "render modes" which affect "where" the page's HTML, etc. is generated (or "rendered") *@
+
+<PageTitle>Counter (the Traditional Example)</PageTitle>
+
+<aside>
+    <p>The current date/time is @RightNow.</p>
+</aside>
+<h1>Counter</h1>
+
+<p>Current count: <b>@CurrentCount</b></p>
+                  @*^^ field *@
+
+<input type="range" min="1" max="10" step="1" @bind-value="Amount" />
+
+<button @onclick="DecrementCount"><i class="las la-minus-circle"></i> Decrease</button>
+<button @onclick="IncrementCount"><i class="las la-plus-circle"></i> Increase</button>
+<output>@Amount</output>
+<style>
+    output {
+        font-size: 2em;
+        border: solid thin gray;
+        padding: 4px;
+    }
+</style>
+@code {
+    // This "code block" is the "contents" of my
+    // Counter class.
+    private DateTime RightNow = DateTime.Now;
+    private int CurrentCount = 0; // field
+    private int Amount { get; set; } = 1;
+
+    private void IncrementCount()
+    {
+        CurrentCount += Amount;
+    }
+    private void DecrementCount()
+    {
+        CurrentCount -= Amount;
+    }
+}
