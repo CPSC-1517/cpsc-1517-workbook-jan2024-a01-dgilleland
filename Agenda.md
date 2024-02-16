@@ -1,6 +1,6 @@
 # Agenda
 
-> These are my notes on what I plan to teach in each [**upcoming class**](#jan-17). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
+> These are my notes on what I plan to teach in each [**upcoming class**](#feb-16). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ##### *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
@@ -166,12 +166,77 @@
     pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/006 ./src/006
     ```
 
+- [ ] **Homework!**
+  - [ ] Read the following:
+    - [ ] [**ASP.NET Documentation**](https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-8.0) *(Entry point to learn more about ASP.NET)*
+    - [ ] [**ASP.NET Core Blazor**](https://learn.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-8.0)
+    - [ ] [**ASP.NET Core Blazor project structure**](https://learn.microsoft.com/en-us/aspnet/core/blazor/project-structure?view=aspnetcore-8.0)
+    - [ ] [**Layout in ASP.NET Core**](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-8.0)
+    - [ ] [**Razor syntax reference for ASP.NET Core**](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-8.0)
+    - [ ] [**ASP.NET Core Razor components**](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/?view=aspnetcore-8.0)
+    - [ ] [**ASP.NET Core Razor component lifecycle**](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-8.0)
 
 ----
 
 ## Extra Resources
 
 - [ ] [Learn C# through Console Games](https://dev.to/zacharypatten/learn-c-through-console-games-49kk) and [**More C# Console Games**](https://dev.to/zacharypatten/more-c-console-games-27bg)
+
+## Feb 13 (W6)
+
+- [ ] Exercise 2 Solution
+
+
+## Feb 14
+
+- [ ] **Quiz 1**
+
+  ![Quiz 1](./docs/images/Quiz1.png)
+
+## Feb 16
+
+- [ ] Classless CSS in Blazor 8
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/007 ./src/007
+    ```
+
+- [ ] **Homework!**
+  - [ ] Read the following (along with readings added to [*Feb 9*](#feb-9)):
+    - [ ] [**ASP.NET Core Blazor project structure**](https://learn.microsoft.com/en-us/aspnet/core/blazor/project-structure?view=aspnetcore-8.0)
+    - [ ] [ASP.NET Core Blazor forms overview](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-8.0)
+    - [ ] [ASP.NET Core Blazor input components](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/input-components?view=aspnetcore-8.0)
+    - [ ] [ASP.NET Core Blazor forms binding](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/binding?view=aspnetcore-8.0)
+    - [ ] [ASP.NET Core Blazor forms validation](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/validation?view=aspnetcore-8.0)
+    - [ ] [Working with Dates And Times in Razor Pages Forms](https://www.mikesdotnetting.com/article/352/working-with-dates-and-times-in-razor-pages-forms)
+    - [ ] [Troubleshoot ASP.NET Core Blazor forms](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/troubleshoot?view=aspnetcore-8.0)
+    - [ ] [Model Binding in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-8.0)
+    - [ ] [Work with images in ASP.NET Core Blazor](https://learn.microsoft.com/en-us/aspnet/core/blazor/images?view=aspnetcore-8.0)
+    - [ ] [ASP.NET Core Blazor QuickGrid component](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/quickgrid?view=aspnetcore-8.0)
+
+----
+
+## Feb 26
+
+- [ ] HTML Form Elements (In Blazor 8)
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/008 ./src/008
+    ```
+
+
+## Feb 29
+
+- [ ] Reports and CSV Data
+  - [ ] Begin the *Weather-or-Not* demo
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/009 ./src/009
+    ```
+
+
+
+----
 
 ## *Future - TBD*
 
