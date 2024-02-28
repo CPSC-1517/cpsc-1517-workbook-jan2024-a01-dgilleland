@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="cocona" Version="2.2.0" />
+    <PackageReference Include="Dumpify" Version="0.6.5" />
   </ItemGroup>
 
   <PropertyGroup>
