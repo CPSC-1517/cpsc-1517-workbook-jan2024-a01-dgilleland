@@ -40,6 +40,6 @@ void Concept()
                 }
             };
 
-    grid.Dump();
+    grid.Dump("Player Won");
 }
 
