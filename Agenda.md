@@ -1,6 +1,6 @@
 # Agenda
 
-> These are my notes on what I plan to teach in each [**upcoming class**](#feb-16). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
+> These are my notes on what I plan to teach in each [**upcoming class**](#mar-1). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ##### *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
@@ -216,7 +216,25 @@
 
 ----
 
-## Feb 26
+## Reading Break
+
+| Feb 12-16, 2024 | Showing Appreciation |
+|:--:|:---|
+| ![book](./docs/images/storyline-top-book.png) | What takes you 5 minutes to read may take 40 minutes to write with additional background time spent researching and verifying the content. Take time to appreciate that what you are consuming in such a short time has taken exponentially more time to produce. Share the appreciation for what you receive. |
+
+----
+
+## Feb 27
+
+> Instructor away - students are to ensure they have completed the [readings from Feb 15](#feb-15).
+
+
+## Feb 28
+
+- [ ] Solution to the In-Class Assessment
+
+
+## Mar 1
 
 - [ ] HTML Form Elements (In Blazor 8)
 
@@ -224,8 +242,16 @@
     pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/008 ./src/008
     ```
 
+  - [ ] Run the website in watch mode
 
-## Feb 29
+    ```ps
+    cd src/008/Website
+    dotnet watch
+    ```
+
+----
+
+## Mar 5
 
 - [ ] Reports and CSV Data
   - [ ] Begin the *Weather-or-Not* demo
