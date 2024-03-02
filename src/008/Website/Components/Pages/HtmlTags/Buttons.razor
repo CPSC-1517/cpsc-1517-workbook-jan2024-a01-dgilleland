@@ -1,13 +1,17 @@
 ﻿@page "/HtmlTags/buttons"
 @rendermode InteractiveServer
 
-<PageTitle>HTML Tags - Buttons</PageTitle>
+<PageTitle>HTML Tags - Buttons and Events</PageTitle>
 
-<h1>Buttons</h1>
-<p>Describe. <i>Click the accordian titles below to view each demo.</i></p>
+<h1>Buttons and Events</h1>
+
+<p>Because Blazor supports using SignalR/Ajax for server-side interactivity and WASM for client-side interactivity, the traditional notion of simple <code>POST</code>/<code>GET</code> form submissions is not necessarily in play. In fact, you will see many of the HTML input tag examples don't need the button-clicks to have their content processed on the server and rendered back to the client. Instead, with the two-way binding, you will be seeing the updates as a result of the naitive <code>onchange</code> events of the HTML tags.</p>
+<p><i>Click the accordian titles below to view each demo.</i></p>
+
 <article>
     <details>
-        <summary role="button" class="secondary">Sample</summary>
+        <summary role="button" class="secondary">Button Types</summary>
+        <h3>TODO: Submit, Button, Reset</h3>
         <fieldset role="group">
             <input type="text">
             <button type="button" @onclick="ProcessX">Process</button>
@@ -20,6 +24,94 @@
         }
         <blockquote>
             
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details>
+        <summary role="button" class="secondary">Starship Plain Form</summary>
+        <p><i>The following is adapted from the <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-8.0" target="_blank" rel="noopener noreferrer">Forms Overview</a> sample (with the logger replaced with other feedback).</i></p>
+        <form method="post" @onsubmit="Submit" @formname="starship-plain-form">
+            <AntiforgeryToken />
+            <div>
+                <label>
+                    Identifier: 
+                    <InputText @bind-Value="Model!.Id" />
+                </label>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        @code {
+            [SupplyParameterFromForm]
+            public Starship? Model { get; set; }
+
+            protected override void OnInitialized()
+            { 
+                Model ??= new();
+                LoggedShips = new();
+                if(File.Exists(StarshipLogPath))
+                {
+                    var lines = File.ReadAllLines(StarshipLogPath);
+                    foreach(var id in lines)
+                        LoggedShips.Add(new Starship{ Id = id});
+                }
+                else
+                {
+                    // Ensure the file will exist
+                    var directory = Path.GetDirectoryName(StarshipLogPath);
+                    if(!Directory.Exists(directory))
+                        Directory.CreateDirectory(directory);
+                    File.WriteAllLines(StarshipLogPath, new string[0]);
+                }
+            }
+
+            const string StarshipLogPath = "./RnD/StarshipLogs.dat";
+            private List<Starship> LoggedShips;
+            private string Feedback;
+
+            private void Submit()
+            {
+                if(Model is null || string.IsNullOrWhiteSpace(Model.Id))
+                {
+                    Feedback = "You have not entered actual text for the Starship ID.";
+                }
+                else
+                {
+                    // Clean up input
+                    Model.Id = Model.Id.Trim();
+                    if(LoggedShips.Any(ship => ship.Id == Model.Id))
+                    {
+                        Feedback = $"The ship \"{Model}\" is already registered";
+                    }
+                    else
+                    {
+                        LoggedShips.Add(Model);
+                        File.AppendAllLines(StarshipLogPath, new string[]{Model.Id});
+                        Model = new();
+                        Feedback = string.Empty;
+                    }
+                }
+            }
+
+            public class Starship
+            {
+                public string? Id { get; set; }
+                public override string ToString()
+                {
+                    return Id ?? string.Empty;
+                }
+            }
+        }
+        <blockquote>
+            @if(!string.IsNullOrEmpty(Feedback))
+            {
+                <p>@Feedback</p>
+            }
+            Registered Ships:
+            @string.Join(", ", LoggedShips)
             <footer><cite>&ndash; Output will appear above</cite></footer>
         </blockquote>
     </details>
