@@ -6,6 +6,21 @@
 >
 > > My philosophy of teaching, taken from [the source](https://www.bible.com/bible/111/1TH.5.14.NIV)
 
+## Code Samples
+
+Are you interested in grabbing my code samples? Here's a quick script that you can run in the terminal from the root of your own repository to grab all of my code samples and place them inside a folder called `~/dan/`.
+
+```ps
+# Ensure your terminal is open at the ROOT of your workbook!
+pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src ./dan
+```
+
+If you *don't* want my samples to be included in your own repository's history, then change the last part from `./dan` to `./rnd`.
+
+Note that each time you run this, it will overwrite the existing content in that folder; that makes it easy to keep up-to-date with my changes. Use your own `~/src/` folder for your personal demos and practices attempts. Detail on how the script works can be found in the [`~/src/ReadMe.md`](./src/ReadMe.md) file.
+
+----
+
 ## Jan 9 (W1)
 
 - [x] Course Introduction
