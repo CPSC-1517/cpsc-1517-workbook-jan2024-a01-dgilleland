@@ -254,7 +254,7 @@ Note that each time you run this, it will overwrite the existing content in that
 - [ ] HTML Form Elements (In Blazor 8)
 
     ```ps
-    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/008 ./src/008
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/008 ./src/008
     ```
 
   - [ ] Run the website in watch mode
@@ -272,7 +272,7 @@ Note that each time you run this, it will overwrite the existing content in that
   - [ ] Begin the *Weather-or-Not* demo
 
     ```ps
-    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/009 ./src/009
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/009 ./src/009
     ```
 
 
@@ -280,6 +280,8 @@ Note that each time you run this, it will overwrite the existing content in that
 ----
 
 ## *Future - TBD*
+
+> ***TODO:** Consolodate these ideas with the other section (Beyond Compare)*
 
 - [ ] Demo **Fraction**
   - [ ] version 1 - create unit tests
