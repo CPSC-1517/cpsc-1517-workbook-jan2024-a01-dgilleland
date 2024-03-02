@@ -1,0 +1,14 @@
+/* Builds upon PicoCSS */
+
+fieldset > legend {
+    padding-left: calc(var(--pico-spacing) * .5);
+    border-left: thin solid var(--pico-primary-border);
+    border-top: thin solid var(--pico-primary-border);
+    border-top-left-radius: calc(var(--pico-spacing) * .5);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--pico-primary-border);
+    text-decoration-thickness: 0.4px;
+    font-weight: bolder;
+    color: var(--pico-accordion-active-summary-color);
+}

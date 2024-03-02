@@ -1,0 +1,27 @@
+﻿@page "/form-02"
+<PageTitle>Form 02 - Email Confirmation Code</PageTitle>
+
+<h1>Email Confirmation</h1>
+
+<form method="post" @formname="Info" @onsubmit="HandlePost">
+    <button type="submit">Get Confirmation Code</button>
+    <AntiforgeryToken />
+</form>
+
+@if(string.IsNullOrEmpty(ErrorMessage))
+{
+
+}
+else
+{
+    <h2>@ErrorMessage</h2>
+}
+
+@code {
+    private string? ErrorMessage { get; set; }
+
+    private void HandlePost(EventArgs e)
+    {
+        ErrorMessage = "Posted Form";
+    }
+}

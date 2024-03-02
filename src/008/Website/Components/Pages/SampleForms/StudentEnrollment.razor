@@ -1,0 +1,50 @@
+﻿@page "/SampleForms/Registration"
+@rendermode InteractiveServer
+<PageTitle>Student Enrollment</PageTitle>
+
+<style type="text/css">
+    label:before {
+        content: ".";
+        clear: both;
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+</style>
+<section>
+    <h1>Student Enrollment</h1>
+    <p>Fill out the following form and click Submit.</p>
+
+    <form action="StudentEnrollment.html">
+        <fieldset>
+            <legend>Enrollment</legend>
+            <label for="firstName">First Name</label>
+            <input name="firstName" type="text">
+            <label for="lastName">Last Name</label>
+            <input name="lastName" type="text">
+            <label for="middleName">Middle Name</label>
+            <input name="middleName" type="text">
+            <label for="socialInsuranceNumber">Social Insurance Number</label>
+            <input name="socialInsuranceNumber" type="number" min="100000000" max="999999999">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input name="dateOfBirth" type="date">
+            <label for="programOfStudy">Program of Study</label>
+            <select name="programOfStudy">
+                <option value="DMIT">Digital Media and Information Technology</option>
+                <option value="Business">Business</option>
+                <option value="Dental">Dental Hygene</option>
+                <option value="EMT">Emergency Medial Technician</option>
+            </select>
+            <label for="schoolYear">Starting School Year</label>
+            <select name="schoolYear">
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+            </select>
+        </fieldset>
+        <input name="submit" type="submit" value="Submit">
+    </form>
+</section>
+
+@code {
+}

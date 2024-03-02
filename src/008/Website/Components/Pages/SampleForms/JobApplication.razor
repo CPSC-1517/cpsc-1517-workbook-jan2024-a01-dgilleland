@@ -1,0 +1,108 @@
+﻿@page "/SampleForms/JobApplication"
+@rendermode InteractiveServer
+
+<PageTitle>Job Application</PageTitle>
+
+<style type="text/css">
+    label:before, .inline-block label:after {
+        content: ".";
+        clear: both;
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .inline-block {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+        .inline-block label:before {
+            content: ".";
+            clear: both;
+            display: inline;
+            height: 0;
+            visibility: hidden;
+        }
+</style>
+
+@code {
+    private JobApplicant? Person { get; set; }
+        protected override void OnInitialized()
+        {
+            Person = new();
+        }
+}
+<section>
+    <h1>Job Application</h1>
+    <p>Please fill out the following form and click Submit to apply for the listed job(s).</p>
+    <fieldset>
+        <legend>Application Form</legend>
+        <label for="fullName">Name</label>
+        <input name="fullName" type="text" @bind-value="Person.FullName">
+        <label for="emailAddress">Email</label>
+        <input name="emailAddress" type="email" @bind-value="Person.Email">
+        <label for="phoneNumber">Phone</label>
+        <input name="phoneNumber" type="tel" @bind-value="Person.PhoneNumber"
+                pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+                title="Canadian/US Phone Number">
+        @* <label for="fullOrPartTime">Full/Part Time</label>
+        <div class="inline-block">
+            <input name="fullOrPartTime" type="radio" @bind="ApplyForFullTime" />
+            <label for="fullOrPartTime">Full time</label>
+            <input name="fullOrPartTime" type="radio" value="false"
+                    checked="@@("Part time".Equals(workAmount))">
+            <label for="fullOrPartTime_1">Part time</label>
+        </div>
+        <label for="jobIn">Jobs</label>
+        <div class="inline-block">
+            <input type="checkbox" name="jobIn" value="Sales"
+                    checked="@@(workArea.Contains("Sales"))">
+            <label for="jobInSales">Sales</label>
+
+            <input type="checkbox" name="jobIn" value="Manufacturing"
+                    checked="@@(workArea.Contains("Manufacturing"))">
+            <label for="jobInManufacturing">Manufacturing</label>
+
+            <input type="checkbox" name="jobIn" value="Accounting"
+                    checked="@(workArea.Contains("Accounting"))">
+            <label for="jobInAccounting">Accounting</label>
+
+            <input type="checkbox" name="jobIn" value="ShippingReceiving"
+                    checked="@(workArea.Contains("ShippingReceiving"))">
+            <label for="jobInShippingReceiving">Shipping/Receiving</label>
+        </div> *@
+    </fieldset>
+    <fieldset class="grid">
+        <input name="submit" type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+        <input name="submit" type="submit" value="Clear Form" />
+    </fieldset>
+
+</section>
+
+@* @{
+    // Grab whatever values are in the Request name/value collection
+    // TODO: Use the Request.Form[]  because the <form method="post">
+    var name = Request["fullName"];
+    var email = Request["emailAddress"];
+    var phone = Request["phoneNumber"];
+    var workAmount = Request["fullOrPartTime"];
+    // Note that the workArea info can have many values, because we are using checkboxes
+    var workArea = Request["jobIn"] ?? string.Empty; // Null Coalescing Operator
+}
+@if (IsPost)
+{
+    var submitAction = Request["submit"];
+    switch (submitAction)
+    {
+        case "Submit":
+            // Process the application
+            <div><b>Thank you <u>@name</u> for your application!</b></div>
+            break;
+        case "Clear Form":
+            // empty out form
+            name = email = phone = workAmount = workArea = string.Empty;
+            break;
+    }
+} *@

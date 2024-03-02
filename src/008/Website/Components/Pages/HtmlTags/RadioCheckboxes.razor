@@ -1,0 +1,121 @@
+﻿@page "/HtmlTags/radiocheck"
+@rendermode InteractiveServer
+@using Humanizer
+
+<PageTitle>HTML Tags - Radio Buttons and Checkboxes</PageTitle>
+
+<h1>Radio Buttons and Checkboxes</h1>
+
+<p>Radio Buttons and Checkboxes are both created through <code>&lt;input&gt;</code> tags. Radio Buttons are grouped in sets of two or more, because they represent <b>mutually-exclusive</b> options for the user to select from. Checkboxes may stand on their own or be grouped into sets of two or more.</p>
+<p>Grouping these controls is typically accomplished by ensuring that they all share the same value for their <code>name</code> attribute, though <i>that is not necessarily required in Blazor</i> (depending on how you've build your form).</p>
+<aside>As a bit of "bling", I've included <a href="https://github.com/Humanizr/Humanizer" target="_blank" rel="noopener noreferrer">Humanizer</a> in this project and used it in the samples below. <i>Click the accordian titles below to view each demo.</i></aside>
+
+<article>
+    <details>
+        <summary role="button" class="secondary">Radio Buttons</summary>
+        <fieldset>
+            <input  type="radio" id="partTime"
+                    @onchange="()=>RadioChoice=EnrollmentStatus.PartTime" 
+                    checked="@(RadioChoice == EnrollmentStatus.PartTime)" />
+            <label for="partTime">Part-Time Student</label>
+
+            <input  type="radio" id="fullTime" 
+                    @onchange="()=>RadioChoice=EnrollmentStatus.FullTime" 
+                    checked="@(RadioChoice == EnrollmentStatus.FullTime)"  />
+            <label for="fullTime">Full-Time Student</label>
+            
+            <input  type="radio" id="notEnrolled"
+                    @onchange="()=>RadioChoice=EnrollmentStatus.None" 
+                    checked="@(RadioChoice == EnrollmentStatus.None)"  />
+            <label for="notEnrolled">Not a Student</label>
+        </fieldset>
+        <button type="button" @onclick="Graduate">Graduated! <i class="las la-graduation-cap"></i></button>
+        <button type="button" @onclick="ResetRadio" class="secondary">Reset</button>
+
+        @code {
+            private enum EnrollmentStatus { None, PartTime, FullTime}
+            private EnrollmentStatus? RadioChoice;
+            private void Graduate()
+            {
+                RadioChoice = EnrollmentStatus.None;
+            }
+            private void ResetRadio()
+            {
+                RadioChoice = null;
+            }
+        }
+        <blockquote>
+            @if(RadioChoice.HasValue)
+            {
+                <text>My enrollment status is <mark>@RadioChoice.Value.Humanize()</mark>.</text>
+            }
+            else
+            {
+                <i>For information on styling Radio Buttons with Pico, see <a href="https://picocss.com/docs/forms/radios" target="_blank" rel="noopener noreferrer">this resource</a>.</i>
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details>
+        <summary role="button" class="secondary">Checkboxes</summary>
+        <fieldset>
+            <legend>Select Your Preferred Languages</legend>
+            
+            <input type="checkbox" id="fav-csharp"
+                    @onchange='()=>ToggleLanguage("C#")'/>
+            <label for="fav-csharp">C#</label>
+
+            <input type="checkbox" id="fav-java"
+                    @onchange='()=>ToggleLanguage("Java")'/>
+            <label for="fav-java">Java</label>
+            
+            <input type="checkbox" id="fav-js"
+                    @onchange='()=>ToggleLanguage("JavaScript")'/>
+            <label for="fav-js">JavaScript</label>
+            
+            <input type="checkbox" id="fav-web"
+                    @onchange='()=>ToggleLanguage("HTML/CSS")'/>
+            <label for="fav-web">HTML/CSS</label>
+            
+            <input type="checkbox" id="fav-sql"
+                    @onchange='()=>ToggleLanguage("SQL")'/>
+            <label for="fav-sql">SQL</label>
+        </fieldset>
+        <button type="button" @onclick="ClearCheckboxes">Clear All</button>
+        <input type="checkbox" id="am-experienced" @bind-value="IAmExperiencedEnoughToTeachThese" />
+        <label for="am-experienced">I am experienced enough to teach these programming languages</label>
+        @code {
+            private bool IAmExperiencedEnoughToTeachThese;
+            private List<string> PreferredProgrammingLanguages { get; set; }
+            protected override void OnInitialized()
+            {
+                PreferredProgrammingLanguages = new();
+            }
+            private void ToggleLanguage(string lang)
+            {
+                if(PreferredProgrammingLanguages.Contains(lang))
+                {
+                    PreferredProgrammingLanguages.Remove(lang);
+                }
+                else
+                {
+                    PreferredProgrammingLanguages.Add(lang);
+                }
+            }
+            private void ClearCheckboxes()
+            {
+                PreferredProgrammingLanguages.Clear();
+            }
+        }
+        <blockquote>
+            <p>@string.Join(", ", PreferredProgrammingLanguages)</p>
+            @if(IAmExperiencedEnoughToTeachThese)
+            {
+                <p><i>@nameof(IAmExperiencedEnoughToTeachThese).Humanize()</i>.</p>
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>
+

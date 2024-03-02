@@ -1,0 +1,28 @@
+﻿@page "/HtmlTags/dropdown"
+@rendermode InteractiveServer
+
+<PageTitle>HTML Tags - Select/Option</PageTitle>
+
+<h1>Drop-Downs</h1>
+Single | Multiple
+<p>Describe. <i>Click the accordian titles below to view each demo.</i></p>
+<article>
+    <details>
+        <summary role="button" class="secondary">Sample</summary>
+        <fieldset role="group">
+            <input type="text">
+            <button type="button" @onclick="ProcessX">Process</button>
+        </fieldset>
+        @code {
+            private void ProcessX()
+            {
+
+            }
+        }
+        <blockquote>
+            
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>
+

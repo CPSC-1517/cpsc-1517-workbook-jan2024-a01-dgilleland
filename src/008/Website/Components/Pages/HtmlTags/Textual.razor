@@ -1,0 +1,174 @@
+﻿@page "/HtmlTags/textual"
+@rendermode InteractiveServer
+
+<PageTitle>HTML Tags - Input</PageTitle>
+
+<h1>Text Inputs</h1>
+
+<p>The <code>&lt;input&gt;</code> tag is used to get single-line textual input. Here, we explore some of the different types of textual input supported in HTML5. <i>Click the accordian titles below to view each demo.</i></p>
+
+@code {
+    private void HandleGeneralClick()
+    {
+        // This method is general-purpose, used by most buttons in this demo.
+        // This method need not do anything other than exist for the button to initiate the transfer of user input for server-side processing.
+        Cleanup(); // BUT, I'm cleaning up the some demos
+    }
+}
+
+<article>
+    <details><!-- Plain Text -->
+        <summary role="button" class="secondary">Plain Text</summary>
+        <fieldset role="group">
+            <input type="text" @bind-value="PlainText" />
+            <button type="button" @onclick="HandleGeneralClick">Process</button>
+        </fieldset>
+        @code {
+            private string PlainText;
+        }
+        <blockquote>
+            "@PlainText"
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- Password -->
+        <summary role="button" class="secondary">Password</summary>
+        <fieldset role="group">
+            <input type="password" @bind-value="PasswordInput" />
+            <button type="button" @onclick="ProcessPassword">Process</button>
+        </fieldset>
+        @code {
+            private string PasswordInput;
+            private string SecurityNote;
+            private void ProcessPassword()
+            {
+                SecurityNote = "I sure hope that you're not entering real passwords";
+            }
+        }
+        <blockquote>
+            "@PasswordInput"
+            <footer><cite>@SecurityNote &ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- URL -->
+        <summary role="button" class="secondary">Url</summary>
+        <fieldset role="group">
+            <input type="url" pattern="https://.*" placeholder="Enter an absolute URL - https://..." @bind-value="UrlInput" />
+            <button type="button" @onclick="ProcessUrlInput">Process</button>
+        </fieldset>
+        @code {
+            private string UrlInput;
+            private string UrlFeedback;
+            private void ProcessUrlInput()
+            {
+                if(UrlInput.StartsWith("https://"))
+                {
+                    UrlFeedback = string.Empty;
+                }
+                {
+                    UrlFeedback = $"The input \"{UrlInput}\" isn't a valid web address";
+                    UrlInput = string.Empty; // Clear the input
+                }
+            }
+        }
+        <blockquote>
+            @if(string.IsNullOrEmpty(UrlFeedback) && !string.IsNullOrEmpty(UrlInput))
+            {
+            <span>"@UrlInput" - <a href="@UrlInput" target="_blank">Go</a></span>
+            } else if(!string.IsNullOrEmpty(UrlFeedback))
+            {
+                <small style="color: var(--pico-del-color);">@UrlFeedback</small>
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- Email -->
+        <summary role="button" class="secondary">Email</summary>
+        <fieldset role="group">
+            <input type="email" @bind-value="EmailInput">
+            <button type="button" @onclick="HandleGeneralClick">Process</button>
+        </fieldset>
+        @code {
+            private string EmailInput;
+        }
+        <p>No special validation is occurring at this point. Look at some of the other demos for validation examples.</p>
+        <blockquote>
+            <u>@EmailInput</u>
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- Telephone -->
+        <summary role="button" class="secondary">Telephone</summary>
+        <fieldset role="group">
+            <input type="tel" @bind-value="PhoneInput">
+            <button type="button" @onclick="HandleGeneralClick">Process</button>
+        </fieldset>
+        @code {
+            private string PhoneInput;
+        }
+        <blockquote>
+            @PhoneInput
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- Search -->
+        <summary role="button" class="secondary">Search</summary>
+        <fieldset role="group">
+            <input type="search" @bind-value="SearchInput">
+            <button type="button" @onclick="HandleGeneralClick">Process</button>
+        </fieldset>
+        @code {
+            private string SearchInput;
+        }
+        <blockquote>
+            @if(!string.IsNullOrEmpty(SearchInput))
+            {
+                <text><mark>@SearchInput</mark> &mdash; <i>I still haven't found what you're looking for...</i></text>
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- TextArea -->
+        <summary role="button" class="secondary">Multi-Line Input</summary>
+        <textarea name="" id="" cols="30" rows="7" @bind="MultiLineText"></textarea>
+        <fieldset class="grid">
+            <button type="button" class="secondary" @onclick="ClearAll">Clear ALL Inputs</button>
+            <button type="button" class="contrast" @onclick="ClearTextArea">Clear This Input</button>
+            <button type="button" @onclick="HandleGeneralClick">Process</button>
+        </fieldset>
+        @code {
+            private string MultiLineText;
+            private void ClearTextArea()
+            {
+                MultiLineText = string.Empty;
+            }
+        }
+        <p>Note in the source code how you need to use the <code>@@bind=</code> attribute in order to bind <code>&lt;textarea&gt;</code> elements.</p>
+        <blockquote>
+            @if(!string.IsNullOrWhiteSpace(MultiLineText))
+            {
+                <pre><code>@MultiLineText</code></pre>
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>
+
+@code {
+    private void Cleanup()
+    {
+        // Quick'n'DIRTY clean-up of all specialized input processing
+        PasswordInput = SecurityNote = UrlInput = UrlFeedback = string.Empty;
+    }
+    private void ClearAll()
+    {
+        Cleanup();
+        PlainText = SearchInput = EmailInput = PhoneInput = string.Empty;
+    }
+}

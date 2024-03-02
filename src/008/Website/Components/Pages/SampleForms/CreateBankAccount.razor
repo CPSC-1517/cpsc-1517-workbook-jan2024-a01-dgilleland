@@ -1,0 +1,60 @@
+﻿@page "/SampleForms/BankAccount"
+@rendermode InteractiveServer
+
+<PageTitle>Create Bank Account</PageTitle>
+<HeadContent>
+    <link rel="stylesheet" href="app.pico.css" />
+</HeadContent>
+<section>
+    <h1>Create Bank Account</h1>
+    <p>Fill in the following form and click Submit.</p>
+    <fieldset>
+        <legend>New Account</legend>
+        <label for="accountHolder">Account Holder</label>
+        <input id="accountHolder" @bind-value="Account.Holder" />
+        <label for="accountNumber">Account Number</label>
+        <input id="accountNumber" @bind-value="Account.Number" />
+        <label for="openingBalance">Opening Balance</label>
+        <input id="openingBalance" type="number" @bind-value="Account.Balance" />
+        <label for="overdraftLimit">Overdraft Limit</label>
+        <input id="overdraftLimit" type="number" @bind-value="Account.OverdraftLimit" />
+        <label for="accountType">Account Type</label>
+        <select id="accountType" @bind="Account.Type">
+            <option value="">[select an account type]</option>
+            <option value="Chequing">Chequing</option>
+            <option value="Savings">Savings</option>
+            <option value="Credit">Credit</option>
+        </select>
+    </fieldset>
+    <button type="button" @onclick="CreateAccount">Open Account</button>
+    @if(RequestedNewAccount)
+    {
+        <blockquote>
+            Created an account with the following details:
+            <b>@Account.ToString()</b>
+            <br />
+            @Feedback
+        </blockquote>
+    }
+</section>
+
+@code{
+    // TODO: Create a class to model the data, along with an enumeration for the account type
+    private BankAccount Account { get; set; }
+    private bool RequestedNewAccount { get; set; }
+    private string Feedback { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Account = new(); // Instantiate my BankAccount
+    }
+
+    private void CreateAccount()
+    {
+        if(RequestedNewAccount)
+        {
+            Feedback = "Account has already been created.";
+        }
+        RequestedNewAccount = true;
+    }
+} 

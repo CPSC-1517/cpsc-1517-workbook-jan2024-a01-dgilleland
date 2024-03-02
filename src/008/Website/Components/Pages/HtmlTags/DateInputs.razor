@@ -1,0 +1,74 @@
+﻿@page "/HtmlTags/dates"
+@rendermode InteractiveServer
+
+<PageTitle>HTML Tags - Date/Time Inputs</PageTitle>
+
+<h1>Date/Time Inputs</h1>
+<p>Describe. <i>Click the accordian titles below to view each demo.</i></p>
+<article>
+    <details>
+        <summary role="button" class="secondary">Capturing <b>Date</b> Only</summary>
+        <label  for="start">Start date:</label>
+        <input  type="date" id="start" name="trip-start" 
+                @bind-value="StartDate"
+                min="@FromToday(-2)" 
+                max="@FromToday(10)" />
+
+        <button type="button" @onclick="ClearStartDate">Clear</button>
+        @code {
+            private string FromToday(int days)
+            {
+                var date = DateTime.Today.AddDays(days);
+                return DateOnly.FromDateTime(date).ToShortDateString();
+            }
+            private DateOnly? StartDate;
+            private void ClearStartDate()
+            {
+                StartDate = null;
+            }
+        }
+        <p>This example is adapted from the MDN article on using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date" target="_blank">Date</a> type for input elements.</p>
+        <blockquote>
+            @StartDate?.ToLongDateString()
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details>
+        <summary role="button" class="secondary">Capturing <b>Time</b> Only</summary>
+        <label  for="appt">Choose a time for your meeting:</label>
+        <input  type="time" id="appt" name="appt" min="09:00" max="18:00"
+                @bind-value="MeetingTime" />
+        <small>Office hours are 9am to 6pm</small>
+
+        <button type="button" @onclick="ClearMeetingTime">Clear</button>
+        @code {
+            private TimeOnly? MeetingTime;
+            private void ClearMeetingTime()
+            {
+                MeetingTime = null;
+            }
+        }
+        <p>This example is adapted from the MDN article on using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time" target="_blank">Time</a> type for input elements.</p>
+        <blockquote>
+            @MeetingTime?.ToLongTimeString()
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details>
+        <summary role="button" class="secondary"><b>Date</b> and <b>Time</b></summary>
+        <label for="meeting-time">Choose a time for your appointment:</label>
+
+        <input  type="datetime-local" id="meeting-time"
+                @bind-value="Appointment" />
+        @code {
+            private DateTime? Appointment;
+        }
+        <p>This example is adapted from the MDN article on using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local" target="_blank">Local Date/Time</a> type for input elements.</p>
+        <blockquote>
+            @Appointment?.ToString()
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>

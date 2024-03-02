@@ -1,0 +1,45 @@
+﻿@page "/form-01"
+@rendermode InteractiveServer
+
+<PageTitle>Form 01 - Sign Up for Beta</PageTitle>
+
+<h1>Beta Release Program</h1>
+
+<p>Sign up for the Beta Release using the form below.</p>
+
+<section>
+    @if (Feedback == null)
+    {
+        <img src="/Images/stick-man-walking.png" alt="">
+    }
+    else
+    {
+        <output>@Feedback</output>
+    }
+    <article>
+        <fieldset role="group">
+            <input type="email" @bind="Contact" placeholder="Your@SomeDomain.com" autofocus />
+            <button type="button" @onclick="JoinBeta">Join</button>
+        </fieldset>
+
+        <label>
+            <input type="checkbox" @bind="KeepInformed" />
+            Keep me up-to-date on announcements.
+        </label>
+        <small id="email-helper">
+            We'll never share your email with anyone else.
+        </small>
+    </article>
+</section>
+
+@code {
+    private string? Feedback { get; set; }
+    private string? Contact { get; set; }
+    private bool KeepInformed { get; set; } = true;
+
+    private void JoinBeta()
+    {
+        Feedback = @"Thanks for your interest! We will keep you up to date on changes and let you know when we are launching our
+product.";
+    }
+}
