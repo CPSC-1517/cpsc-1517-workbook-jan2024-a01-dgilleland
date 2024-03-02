@@ -1,0 +1,30 @@
+﻿@page "/simpleForm"
+@rendermode InteractiveServer
+
+<h1>Hello @Somebody.Name</h1>
+
+<input @bind-value="Somebody.Name" placeholder="Enter your name" />
+
+<button type="button" @onclick="HandleUserInput">Submit</button>
+
+@if (submitted)
+{
+    <p>Form submitted successfully! Thank you @Somebody.Name. Tweet about me @@DanIsSmart</p>
+}
+
+@code {
+    private Person Somebody = new Person();
+    private bool submitted = false;
+
+    private void HandleUserInput()
+    {
+        submitted = true;
+    }
+
+    // Local classes like this are often used as simple
+    // "models" of the data we want to work with.
+    private class Person
+    {
+        public string Name { get; set; }
+    }
+}

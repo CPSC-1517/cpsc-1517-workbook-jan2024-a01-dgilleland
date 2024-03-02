@@ -1,0 +1,89 @@
+﻿@page "/SampleFormInputs"
+@attribute [StreamRendering]
+
+<PageTitle>Sample Form Inputs</PageTitle>
+
+<h3>Sample Form Inputs</h3>
+
+<p>Fill out this form and click a button. For more information on styling form inputs with Bootstrap 5, see <a href="https://getbootstrap.com/docs/5.0/forms/overview/" target="_blank">this page</a>. If you want to use Bootstrap Icons, see <a href="https://icons.getbootstrap.com/" target="_blank">this resource</a>.</p>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col col-lg-8">
+            @if (CustomerFeedback == null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
+                <section class="card">
+                    <header class="card-header">
+                        <h1 class="h3 mb-0">Customer Feedback</h1>
+                        <h2 class="h5 mt-0 fst-italic text-decoration-underline"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2" />
+                            </svg> Tell us what you think. We might even reply back!</h2>
+                    </header>
+                    <form class="card-body" method="post" @onsubmit="SubmitForm">
+                        <fieldset>
+                            <legend>Simple Form Input</legend>
+                            <div class="mb-3">
+                                <label for="textInput" class="form-label">Subject</label>
+                                <input type="text" id="textInput" class="form-control" placeholder="Email Subject"
+                                    @bind="CustomerFeedback.Subject">
+                            </div>
+                            <div class="mb-3">
+                                <label for="yourMessage" class="form-label">What do you want to tell us?</label>
+                                <textarea class="form-control form-control-sm" id="yourMessage" rows="3"
+                                    @bind="CustomerFeedback.Content"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="yourEmail" class="form-label">Your Email address</label>
+                                <input type="email" class="form-control" id="yourEmail" placeholder="name@example.com"
+                                    @bind="CustomerFeedback.From">
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="feedbackCheck"
+                                        @bind="CustomerFeedback.AllowReply">
+                                    <label class="form-check-label" for="feedbackCheck">
+                                        Yes, you may contact me
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                    </form>
+                </section>
+            }
+        </div>
+        <div class="col col-lg-4">
+            <output>@Acknowledgement</output>
+        </div>
+    </div>
+</div>
+
+@code {
+    public Message? CustomerFeedback { get; set; }
+    public string? Acknowledgement { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(4000);
+        CustomerFeedback = new();
+    }
+
+    public async Task SubmitForm()
+    {
+        Acknowledgement = $"Thank you for your feedback!";
+    }
+
+    // The following class is the "data model" for customer feedback
+    public class Message
+    {
+        public string Subject { get; set; }
+        public string Content { get; set; }
+        public string From { get; set; }
+        public bool AllowReply { get; set; }
+    }
+}
