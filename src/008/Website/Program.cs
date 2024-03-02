@@ -3,6 +3,8 @@ using WebApp.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// builder.Services.AddControllers(); // This will register your controllers
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -21,7 +23,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+// app.MapControllers(); // This will configure the endpoints for your controllers
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+// app.MapBlazorHub();
+// app.MapFallbackToPage("/_Host");
 
 app.Run();

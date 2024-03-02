@@ -1,23 +1,108 @@
 ﻿@page "/HtmlTags/others"
-@* textual radiocheck dates dropdown *@
 @rendermode InteractiveServer
+@using Microsoft.JSInterop
+@inject IJSRuntime JS;
 
-<PageTitle></PageTitle>
+<PageTitle>HTML Tags - Other Inputs</PageTitle>
+<HeadContent>
+    <script type="module" src="/Scripts/fileUpload.cs"></script>
+</HeadContent>
 
-<h1>About</h1>
+<h1>Other HTML User Inputs</h1>
+
 <p>Describe. <i>Click the accordian titles below to view each demo.</i></p>
+@code {
+    protected override void OnInitialized()
+    {
+        Height = 50;
+        Width = 500;
+        Color = "#45af18";
+    }
+}
 <article>
-    <details>
-        <summary role="button" class="secondary">Sample</summary>
+    <details><!-- Color -->
+        <summary role="button" class="secondary">Color</summary>
         <fieldset role="group">
-            <input type="text">
-            <button type="button" @onclick="ProcessX">Process</button>
+            <input type="color" @bind-value="Color">
+            <input disabled @bind-value="Color"></input>
         </fieldset>
         @code {
-            private void ProcessX()
-            {
+            private string? Color;
+        }
+        <blockquote>
+            <div style="background-color:@Color">&nbsp;</div>
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
 
+    <details><!-- Number and Range -->
+        <summary role="button" class="secondary">Number and Range</summary>
+        <fieldset class="grid">
+            <legend>Size</legend>
+
+            <label>
+                <input type="range" min="50" max="250" step="10" @bind-value="Height" />
+                Height
+            </label>
+
+            <label>
+                <input type="range" min="100" max="1000" step="20"
+                    @bind-value="Width" />
+                Width
+            </label>
+        </fieldset>
+        <fieldset class="grid">
+            <input type="number" min="50" max="250" step="10" @bind-value="Height" />
+            <input type="number" min="100" max="1000" step="20" @bind-value="Width" />
+        </fieldset>
+
+        @code{
+            private int Height;
+            private int Width;
+        }
+
+        <blockquote>
+            <div style="background-color:aqua ;height:@(Height)px; width: @(Width)px">&nbsp;</div>
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- File -->
+        <summary role="button" class="secondary">File</summary>
+        <h3><i class="las la-file-csv"></i> <mark>NOTE:</mark> <i>This is broken - use the Blazor <code>&lt;InputFile&gt;</code> component.</i></h3>
+        <label>
+            <input type="file" accept=".csv" onchange="handleFileUpload()" />
+            <button @onclick="SaveFile">Save File</button>
+        </label>
+        @code {
+            private string SaveError;
+            private async Task SaveFile()
+            {
+                try
+                {
+                    await JS.InvokeVoidAsync("saveFile");
+                    SaveError = "Blazor code has run, but other errors might exist.";
+                }
+                catch(Exception ex)
+                {
+                    SaveError = ex.Message;
+                    this.StateHasChanged();
+                }
             }
+        }
+        <blockquote>
+            @SaveError
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+
+    <details><!-- Image -->
+        <summary role="button" class="secondary"><b>Image</b> with <b>Hidden</b> Data</summary>
+        <h3><mark>TODO:</mark></h3>
+        <fieldset role="group">
+            <input type="text">
+        </fieldset>
+        @code {
         }
         <blockquote>
             
