@@ -18,6 +18,11 @@
         <p>Ship Identifier: <b>@Ship.Id</b></p>
         <p>Classification: <b>@Ship.Classification</b></p>
         <p>Production Date: <b>@Ship.ProductionDate</b> <i>(old Earth calendar)</i></p>
+        if(Ship is BlazorSample.StarshipClass)
+        {
+            var subClass = Ship as BlazorSample.StarshipClass;
+            <p>Standard Usage: @string.Join(", ", subClass?.SelectedClassification)</p>
+        }
         <p>Maximum Complement: <b>@Ship.MaximumAccommodation</b></p>
         <p>Description: <i>@Ship.Description</i></p>
 

@@ -313,6 +313,13 @@
                 <button type="submit">Submit</button>
             </div>
         </EditForm>
+        <blockquote>
+            @if(Model_5!.IsValidatedDesign)
+            {
+                <StarshipProfile Ship="Model_5" />
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
 
         @if (Model_5?.SelectedClassification?.Length > 0)
         {
