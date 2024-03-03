@@ -1,0 +1,57 @@
+@inherits ComponentBase
+
+<div>
+    <h3>Starship Profile</h3>
+    @if(Ship is null)
+    {
+        <blockquote>Profile information pending...</blockquote>
+    }
+    else
+    {
+        if(!string.IsNullOrEmpty(ProfileImage))
+        {
+            <figure style="float: right; width: 40%; margin-left: 20px; ">
+                <img style="border-radius: .5em;" src="@ProfileImage" alt="@Ship.ProductionClass" />
+                <figcaption>Production Class <i>@Ship.ProductionClass</i></figcaption>
+            </figure>
+        }
+        <p>Ship Identifier: <b>@Ship.Id</b></p>
+        <p>Classification: <b>@Ship.Classification</b></p>
+        <p>Production Date: <b>@Ship.ProductionDate</b> <i>(old Earth calendar)</i></p>
+        <p>Maximum Complement: <b>@Ship.MaximumAccommodation</b></p>
+        <p>Description: <i>@Ship.Description</i></p>
+
+    }
+    <!-- Other ship details here -->
+</div>
+
+@code {
+    [Parameter] public BlazorSample.Starship? Ship { get; set; }
+    private string? ProfileImage;
+    protected override void OnParametersSet()
+    {
+        if(!string.IsNullOrWhiteSpace(Ship?.ProductionClass))
+        {
+            var image = StarshipProfile.Silhouettes.SingleOrDefault(name => name.Contains(Ship.ProductionClass));
+            if(image is null)
+            {
+                ProfileImage = null;
+            }
+            else
+            {
+                ProfileImage = Path.Combine(StarshipProfile.SilhouetteImageFolder.Replace(@"wwwroot", ""), image);
+            }
+        }
+    }
+ 
+    static StarshipProfile()
+    {
+        if(Directory.Exists(SilhouetteImageFolder))
+        {
+            var fullPaths = Directory.EnumerateFiles(SilhouetteImageFolder, "*-class.png");
+            Silhouettes.AddRange(fullPaths.Select(path => Path.GetFileName(path)));
+        }
+    }
+    const string SilhouetteImageFolder = @"wwwroot\Images\Silhouettes";
+    static List<string> Silhouettes = new();
+}

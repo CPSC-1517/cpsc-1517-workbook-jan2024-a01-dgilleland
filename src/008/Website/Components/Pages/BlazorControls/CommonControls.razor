@@ -1,5 +1,6 @@
 ﻿@page "/BlazorControls/InputComponents"
 @using System.ComponentModel.DataAnnotations
+@using WebApp.Components.Shipyards;
 @rendermode InteractiveServer
 
 <PageTitle>Blazor Components - Input Components</PageTitle>
@@ -90,6 +91,13 @@
                 <button type="submit">Submit</button>
             </div>
         </EditForm>
+        <blockquote>
+            @if(Model_3!.IsValidatedDesign)
+            {
+                <StarshipProfile Ship="Model_3" />
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
 
         @code {
             [SupplyParameterFromForm]
@@ -182,7 +190,13 @@
                 <button type="submit">Submit</button>
             </div>
         </EditForm>
-
+        <blockquote>
+            @if(Model_4 is not null)
+            {
+                <StarshipProfile Ship="Model_4" />
+            }
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
         @code {
             private EditContext? editContext_4;
 

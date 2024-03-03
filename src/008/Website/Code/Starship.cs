@@ -23,6 +23,8 @@ public class Starship
 
     public string? Description { get; set; }
 
+    public string? ProductionClass { get; set; } = "Ianar";
+
     [Required]
     public string? Classification { get; set; }
 
