@@ -1,0 +1,334 @@
+﻿@page "/BlazorControls/InputComponents"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Blazor Components - Input Components</PageTitle>
+
+<h1>Input Components - Common Controls in Blazor</h1>
+
+<p>These samples are adapted from the existing ones in the article on Blazor <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/input-components?view=aspnetcore-8.0" target="_blank">Input Components</a> by Microsoft. They revolve around the notion of a "Starfleet Starship Database". <i>Click the accordian titles below to view each demo.</i></p>
+
+<style>
+    article > details > article {
+        background-color: var(--pico-secondary-background);
+    }
+</style>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Initialize_Model_3();
+        Initialize_Model_4();
+        Initialize_Model_5();
+    }
+}
+
+<article>
+    <details>
+        <summary role="button" class="secondary"><b>Starship-3</b> Adaptation</summary>
+        <h2>New Ship Entry Form</h2>
+        <article>
+            <p>The following form accepts and validates user input using:</p>
+            <ul>
+                <li>The properties and validation defined in the preceding Starship model.</li>
+                <li>Several of Blazor's built-in input components.</li>
+            </ul>
+        </article>
+        <EditForm Model="Model_3" OnValidSubmit="Submit_3" FormName="Starship3">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <fieldset role="group">
+                <label>
+                    Identifier: 
+                    <InputText @bind-Value="Model_3!.Id" />
+                </label>
+
+                <label>
+                    Primary Classification: 
+                    <InputSelect @bind-Value="Model_3!.Classification">
+                        <option value="">
+                            Select classification ...
+                        </option>
+                        <option checked="@(Model_3!.Classification == "Exploration")" 
+                            value="Exploration">
+                            Exploration
+                        </option>
+                        <option checked="@(Model_3!.Classification == "Diplomacy")" 
+                            value="Diplomacy">
+                            Diplomacy
+                        </option>
+                        <option checked="@(Model_3!.Classification == "Defense")" 
+                            value="Defense">
+                            Defense
+                        </option>
+                    </InputSelect>
+                </label>
+
+                <label>
+                    Maximum Accommodation: 
+                    <InputNumber @bind-Value="Model_3!.MaximumAccommodation" />
+                </label>
+
+                <label>
+                    Production Date: 
+                    <InputDate @bind-Value="Model_3!.ProductionDate" />
+                </label>
+            </fieldset>
+            <div>
+                <label>
+                    Description (optional): 
+                    <InputTextArea @bind-Value="Model_3!.Description" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Engineering Approval: 
+                    <InputCheckbox @bind-Value="Model_3!.IsValidatedDesign" />
+                </label>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </EditForm>
+
+        @code {
+            [SupplyParameterFromForm]
+            private BlazorSample.Starship? Model_3 { get; set; }
+
+            private void Initialize_Model_3()  =>
+                Model_3 ??= new() { ProductionDate = DateTime.UtcNow };
+
+            private void Submit_3()
+            {
+                @* Logger.LogInformation("Id = {Id} Description = {Description} " +
+                    "Classification = {Classification} MaximumAccommodation = " +
+                    "{MaximumAccommodation} IsValidatedDesign = " +
+                    "{IsValidatedDesign} ProductionDate = {ProductionDate}",
+                    Model?.Id, Model?.Description, Model?.Classification,
+                    Model?.MaximumAccommodation, Model?.IsValidatedDesign,
+                    Model?.ProductionDate); *@
+            }
+        } 
+    </details>
+</article>
+
+
+<article>
+    <details>
+        <summary role="button" class="secondary"><b>Startship-4</b> Adaptation</summary>
+        <article>
+            <p>In the following example:</p>
+            <ul>
+                <li>A shortened version of the earlier Starfleet Starship Database form (Starship3 component) is used that only accepts a value for the starship's Id. The other Starship properties receive valid default values when an instance of the Starship type is created.</li>
+                <li>The Submit method executes when the Submit button is selected.</li>
+                <li>The form is validated by calling EditContext.Validate in the Submit method.</li>
+                <li>Logging is executed depending on the validation result.</li>
+            </ul>
+        </article>
+        
+        <EditForm EditContext="editContext_4" OnSubmit="Submit_4" FormName="Starship4">
+            <DataAnnotationsValidator />
+
+            <fieldset role="group">
+                <label>
+                    Identifier: 
+                    <InputText @bind-Value="Model_4!.Id" />
+                </label>
+
+                <label>
+                    Primary Classification: 
+                    <InputSelect @bind-Value="Model_4!.Classification">
+                        <option value="">
+                            Select classification ...
+                        </option>
+                        <option checked="@(Model_4!.Classification == "Exploration")" 
+                            value="Exploration">
+                            Exploration
+                        </option>
+                        <option checked="@(Model_4!.Classification == "Diplomacy")" 
+                            value="Diplomacy">
+                            Diplomacy
+                        </option>
+                        <option checked="@(Model_4!.Classification == "Defense")" 
+                            value="Defense">
+                            Defense
+                        </option>
+                    </InputSelect>
+                </label>
+
+                <label>
+                    Maximum Accommodation: 
+                    <InputNumber @bind-Value="Model_4!.MaximumAccommodation" />
+                </label>
+
+                <label>
+                    Production Date: 
+                    <InputDate @bind-Value="Model_4!.ProductionDate" />
+                </label>
+            </fieldset>
+            <div>
+                <label>
+                    Description (optional): 
+                    <InputTextArea @bind-Value="Model_4!.Description" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Engineering Approval: 
+                    <InputCheckbox @bind-Value="Model_4!.IsValidatedDesign" />
+                </label>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </EditForm>
+
+        @code {
+            private EditContext? editContext_4;
+
+            [SupplyParameterFromForm]
+            private BlazorSample.Starship? Model_4 { get; set; } 
+
+            private void Initialize_Model_4()
+            {
+                Model_4 ??=
+                    new()
+                        {
+                            Id = "NCC-1701",
+                            Classification = "Exploration",
+                            MaximumAccommodation = 150,
+                            IsValidatedDesign = true,
+                            ProductionDate = new DateTime(2245, 4, 11)
+                        };
+                editContext_4 = new(Model_4);
+            }
+
+            private async Task Submit_4()
+            {
+                if (editContext_4 != null && editContext_4.Validate())
+                {
+                    @* Logger.LogInformation("Submit called: Form is valid"); *@
+
+                    // await ...
+                }
+                else
+                {
+                    @* Logger.LogInformation("Submit called: Form is INVALID"); *@
+                }
+            }
+        }
+    </details>
+</article>
+
+
+
+<article>
+    <details>
+        <summary role="button" class="secondary"><b>Starship-5</b> Adaptation</summary>
+
+        <article>
+            <p>In the following example, the user must select at least two starship classifications but no more than three classifications.</p>
+        </article>
+
+        <h1>Bind Multiple <code>InputSelect</code> Example</h1>
+
+        <EditForm EditContext="editContext_5" OnValidSubmit="Submit" FormName="Starship5">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <fieldset role="group">
+                <label>
+                    Identifier: 
+                    <InputText @bind-Value="Model_5!.Id" />
+                </label>
+
+                <label>
+                    Primary Classification: 
+                    <InputSelect @bind-Value="Model_5!.Classification">
+                        <option value="">
+                            Select classification ...
+                        </option>
+                        <option checked="@(Model_5!.Classification == "Exploration")" 
+                            value="Exploration">
+                            Exploration
+                        </option>
+                        <option checked="@(Model_5!.Classification == "Diplomacy")" 
+                            value="Diplomacy">
+                            Diplomacy
+                        </option>
+                        <option checked="@(Model_5!.Classification == "Defense")" 
+                            value="Defense">
+                            Defense
+                        </option>
+                    </InputSelect>
+                </label>
+
+                <label>
+                    Maximum Accommodation: 
+                    <InputNumber @bind-Value="Model_5!.MaximumAccommodation" />
+                </label>
+
+                <label>
+                    Production Date: 
+                    <InputDate @bind-Value="Model_5!.ProductionDate" />
+                </label>
+            </fieldset>
+            <div>
+                <label>
+                    Description (optional): 
+                    <InputTextArea @bind-Value="Model_5!.Description" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Engineering Approval: 
+                    <InputCheckbox @bind-Value="Model_5!.IsValidatedDesign" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Select classifications (Minimum: 2, Maximum: 3):
+                    <InputSelect @bind-Value="Model_5!.SelectedClassification">
+                        <option value="@BlazorSample.Classification.Exploration">Exploration</option>
+                        <option value="@BlazorSample.Classification.Diplomacy">Diplomacy</option>
+                        <option value="@BlazorSample.Classification.Defense">Defense</option>
+                        <option value="@BlazorSample.Classification.Research">Research</option>
+                    </InputSelect>
+                </label>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </EditForm>
+
+        @if (Model_5?.SelectedClassification?.Length > 0)
+        {
+            <div>@string.Join(", ", Model_5.SelectedClassification)</div>
+        }
+
+        @code {
+            private EditContext? editContext_5;
+
+            [SupplyParameterFromForm]
+            private BlazorSample.StarshipClass? Model_5 { get; set; }
+
+            protected void Initialize_Model_5()
+            {
+                Model_5 = new();
+                editContext_5 = new(Model_5);
+            }
+
+            private void Submit()
+            {
+                // Logger.LogInformation("Submit called: Processing the form");
+            }
+        }        
+    </details>
+</article>
+
+
+
+<article>
+    <details>
+        <summary role="button" class="secondary"></summary>
+    </details>
+</article>
