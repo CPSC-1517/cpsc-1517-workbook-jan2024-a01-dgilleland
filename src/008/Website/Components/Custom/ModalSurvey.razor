@@ -1,0 +1,69 @@
+@inherits ComponentBase
+
+@using Microsoft.AspNetCore.Components
+
+<dialog>
+    
+</dialog>
+
+@* 
+@using Microsoft.AspNetCore.Components
+
+<div class="star-rating">
+    @for (int i = 1; i <= 10; i++)
+    {
+        <span class="star @GetStarClass(i)" @onclick="() => SetRating(i)" @onmouseover="() => SetHover(i)" @onmouseout="() => SetHover(0)"></span>
+    }
+</div>
+
+@code {
+    [Parameter] public int Value { get; set; }
+    [Parameter] public EventCallback<int> ValueChanged { get; set; }
+    private int hover;
+
+    private string GetStarClass(int star)
+    {
+        return (star <= (hover > 0 ? hover : Value)) ? "las la-star" : "lar la-star";
+    }
+
+    private void SetRating(int rating)
+    {
+        if (Value == rating)
+        {
+            Value = 0;
+        }
+        else
+        {
+            Value = rating;
+        }
+        ValueChanged.InvokeAsync(Value);
+    }
+
+    private void SetHover(int star)
+    {
+        hover = star;
+    }
+}
+
+ *@
+
+@code {
+    [Parameter] public IEnumerable<string>? Questions { get; set; }
+    [Parameter] public string? Prefix { get; set; } = "On a scale of 1 to 10, how likely are you to...";
+    
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public bool IsOpen { get; set; }
+
+    public void Show()
+    {
+        IsOpen = true;
+        StateHasChanged();
+    }
+
+    public void Hide()
+    {
+        IsOpen = false;
+        StateHasChanged();
+    }
+}
