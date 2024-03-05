@@ -268,6 +268,9 @@ Note that each time you run this, it will overwrite the existing content in that
 
 ## Mar 5
 
+- [ ] Blazor Input Controls for Forms
+  - [ ] Present updates to the [008](./src/008/ReadMe.md) resources/demo
+  - [ ] Discuss the [Common Controls](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/input-components?view=aspnetcore-8.0#input-components) for Blazor forms and the use of the `<EditForm>` Component.
 - [ ] Reports and CSV Data
   - [ ] Begin the *Weather-or-Not* demo
 
@@ -275,7 +278,12 @@ Note that each time you run this, it will overwrite the existing content in that
     pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/009 ./src/009
     ```
 
+  - [ ] Plan/Design the App
 
+## Mar 6
+
+- [ ] Review Specs on Exercise 3
+- [ ] Continue with 009 (Weather App)
 
 ----
 
