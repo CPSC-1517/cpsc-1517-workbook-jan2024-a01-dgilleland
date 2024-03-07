@@ -4,6 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApp.BlazorSample;
 
+public class Holodeck
+{
+    public string? Id { get; set; }
+    public bool Booked { get; set; }
+}
+
+
 public class StarshipClass : Starship
 {
     [Required]

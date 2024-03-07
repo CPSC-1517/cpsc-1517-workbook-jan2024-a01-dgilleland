@@ -1,0 +1,14 @@
+﻿@inherits ComponentBase
+
+<h3>@Identifier</h3>
+
+<img src="/Images/Silhouettes/@Photo" alt="Holodeck Promo Photo" style="@Filter">
+
+<cite>Image adapted from <a href="https://memory-alpha.fandom.com/wiki/Holodeck" target="_blank" rel="noopener noreferrer">Memory-Alpha</a></cite>
+
+@code {
+    [Parameter] public BlazorSample.Holodeck? Suite { get; set; }
+    public string Identifier => Suite?.Id??"~un-registered~";
+    public string Photo => string.IsNullOrEmpty(Suite?.Id) ? "EmptyHolodeck.jpg" : Suite!.Booked ? "BookedHolodeck.jpg" : "SharedHolodeck.jpg";
+    public string Filter => string.IsNullOrEmpty(Suite?.Id) ? "filter: grayscale(100%) opacity(0.7);" : "";
+}

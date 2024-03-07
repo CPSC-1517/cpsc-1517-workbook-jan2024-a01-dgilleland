@@ -7,11 +7,14 @@
 
 <h1>Input Components - Common Controls in Blazor</h1>
 
-<p>These samples are adapted from the existing ones in the article on Blazor <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/input-components?view=aspnetcore-8.0" target="_blank">Input Components</a> by Microsoft. They revolve around the notion of a "Starfleet Starship Database". <i>Click the accordian titles below to view each demo.</i></p>
+<p>These samples are adapted from the existing ones in the articles on Blazor <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/input-components?view=aspnetcore-8.0" target="_blank">Input Components</a> and <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/binding?view=aspnetcore-8.0" target="_blank" rel="noopener noreferrer">ASP.NET Core Blazor forms binding</a> by Microsoft. They revolve around the notion of a "Starfleet Starship Database". I've interspersed a few other samples here-and-there, but these should cover most of the usages you might encounter in this course. <i>Click the accordian titles below to view each demo.</i></p>
 
 <style>
     article > details > article {
-        background-color: var(--pico-secondary-background);
+        background-color: var(--pico-switch-background-color);
+    }
+    article > details section {
+        columns: 2;
     }
 </style>
 
@@ -21,6 +24,13 @@
         Initialize_Model_3();
         Initialize_Model_4();
         Initialize_Model_5();
+        Initialize_Model_6();
+        Initialize_Model_Extra();
+    }
+
+    private void DoNothing()
+    {
+        // As the name suggests....
     }
 }
 
@@ -75,21 +85,15 @@
                     <InputDate @bind-Value="Model_3!.ProductionDate" />
                 </label>
             </fieldset>
-            <div>
-                <label>
-                    Description (optional): 
-                    <InputTextArea @bind-Value="Model_3!.Description" />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Engineering Approval: 
-                    <InputCheckbox @bind-Value="Model_3!.IsValidatedDesign" />
-                </label>
-            </div>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
+            <label>
+                Description (optional): 
+                <InputTextArea @bind-Value="Model_3!.Description" />
+            </label>
+            <label>
+                Engineering Approval: 
+                <InputCheckbox @bind-Value="Model_3!.IsValidatedDesign" />
+            </label>
+            <button type="submit">Submit</button>
         </EditForm>
         <blockquote>
             @if(Model_3!.IsValidatedDesign)
@@ -235,7 +239,6 @@
 </article>
 
 
-
 <article>
     <details>
         <summary role="button" class="secondary"><b>Starship-5</b> Adaptation</summary>
@@ -346,10 +349,290 @@
     </details>
 </article>
 
+<!-- Using <InputSelect> -->
+<article>
+    <details>
+        <summary role="button" class="secondary">Using <code>&lt;InputSelect&gt;</code> Components</summary>
+        <p>This component generates a <code>&lt;select&gt;</code> in the rendered HTML. Key to working with this component is that you must generate the various <code>&lt;option&gt;</code> elements yourself. You can do this either with hard-coded options or with a loop. You can bind the values for this component to various data types, such as <code>int</code>, <code>double</code>, <code>string</code> or even enumerated types.</p>
+        <EditForm Model="this" FormName="UsingInputSelect" OnSubmit="DoNothing">
+            <fieldset class="grid">
+                <label>
+                    Rate This
+                    <InputSelect @bind-Value="Rating">
+                        @for(int count=1; count <=5; count++)
+                        {
+                            <option value="@count">@count Star</option>
+                        }
+                    </InputSelect>
+                </label>
+                <label>
+                    Favorite Constant
+                    <InputSelect @bind-Value="FavoriteConstant">
+                        <option value="0">Zero</option>
+                        <option value="@Math.PI">PI</option>
+                        <option value="@Math.Tau">Tau</option>
+                        <option value="@Math.E">E</option>
+                    </InputSelect>
+                </label>
+                <label>
+                    Pick a Tutor
+                    <InputSelect @bind-Value="Tutor">
+                        <option value="">[no name]</option>
+                        <option value="Stew Dent">Stewart</option>
+                        <option value="Anna Lyst">Anna</option>
+                        <option>Phobe</option>
+                    </InputSelect>
+                </label>
+                <label>
+                    Main Commute is by
+                    <InputSelect @bind-Value="PrimaryCommute">
+                        <option value="@TransportMode.None">(none)</option>
+                        <option value="@TransportMode.Walk">Walking</option>
+                        <option value="@TransportMode.Transit">Public Transit</option>
+                        <option value="@TransportMode.Drive">Driving</option>
+                    </InputSelect>
+                </label>
+                <label>
+                    Season
+                    <InputSelect @bind-Value="FavoriteSeason">
+                        <option value="">(none)</option>
+                        @foreach (var value in Enum.GetValues(typeof(Season)))
+                        {
+                            <option>@value</option>
+                        }
+                    </InputSelect>
+                </label>
+            </fieldset>
+        </EditForm>
+        <blockquote>
+            Rating: @for(int count = 1; count <= Rating; count++)
+            {
+                <i class="las la-star"></i>
+            }
+            <b>&nbsp;&nbsp;|&nbsp;&nbsp;</b>
+            Constant: @FavoriteConstant
+            <b>&nbsp;&nbsp;|&nbsp;&nbsp;</b>
+            Tutor: @Tutor
+            <b>&nbsp;&nbsp;|&nbsp;&nbsp;</b>
+            Commute: @PrimaryCommute
+            <b>&nbsp;&nbsp;|&nbsp;&nbsp;</b>
+            Season: @FavoriteSeason
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+
+        @code {
+            private int Rating { get; set; }
+            private double FavoriteConstant { get; set; }
+            private string? Tutor { get; set; }
+            private TransportMode PrimaryCommute { get; set; }
+            private Season? FavoriteSeason { get; set; }
+
+            public enum TransportMode { None, Walk, Transit, Drive }
+            public enum Season { Spring, Summer, Autumn, Winter }
+
+        }
+    </details>
+</article>
+
+<!-- Starship-6 Adaptation -->
+<article>
+    <details>
+        <summary role="button" class="secondary"><b>Starship-6</b> Adaptation <i>- Multiple Forms</i></summary>
+        <article>
+            <p>This is probably a bit redundant, but it illustrates a couple of items regarding multiple forms, namely how the <code>[SupplyParameterFromForm]</code> property attribute can specify the name of the form that the property is associated with.</p>
+        </article>
+
+        <section>
+            <EditForm Model="Model1" OnSubmit="Submit1" FormName="Holodeck1">
+                <div>
+                    <label>
+                        Holodeck 1 Identifier: 
+                        <InputText @bind-Value="Model1!.Id" />
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </EditForm>
+
+            <EditForm Model="Model2" OnSubmit="Submit2" FormName="Holodeck2">
+                <div>
+                    <label>
+                        Holodeck 2 Identifier: 
+                        <InputText @bind-Value="Model2!.Id" />
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </EditForm>
+        </section>
+
+        @code {
+            [SupplyParameterFromForm(FormName = "Holodeck1")]
+            public BlazorSample.Holodeck? Model1 { get; set; }
+
+            [SupplyParameterFromForm(FormName = "Holodeck2")]
+            public BlazorSample.Holodeck? Model2 { get; set; }
+
+            private void Initialize_Model_6()
+            {
+                Model1 ??= new();
+                Model2 ??= new();
+            }
+
+            private void Submit1()
+            {
+                if(string.IsNullOrWhiteSpace(Model1!.Id))
+                {
+                    Model1.Id = "Executive Holosuite";
+                }
+                Model1.Booked = true;
+            }
+
+            private void Submit2()
+            {
+                if(string.IsNullOrWhiteSpace(Model2!.Id))
+                {
+                    Model2.Id = "Shared Holosuite";
+                }
+                Model2.Booked = false;
+            }
+        }
+        <blockquote>
+            <section>
+                <HolodeckSuite Suite="Model1" />
+                <HolodeckSuite Suite="Model2" />
+            </section>
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>
 
 
 <article>
     <details>
-        <summary role="button" class="secondary"></summary>
+        <summary role="button" class="secondary">Group of <code>&lt;InputCheckbox&gt;</code> Components</summary>
+        <article>
+            <p>This example was taken and adapted from the article <a href="https://martink.me/articles/blazor-checkbox-group" target="_blank" rel="noopener noreferrer">BLAZOR CHECKBOX GROUP</a>, which is worth a read on this topic. It's probably not the only way to address it, but it's a reasonable one.</p>
+        </article>
+
+        <h1>Blazor-Checkbox-Group</h1>
+        <EditForm EditContext="editContext" OnSubmit="HandleSubmit" FormName="CheckboxGroupDemo">
+            <p>Make at least one choice...</p>
+
+            <label>
+                Choice A:
+                <InputCheckbox type="checkbox" id="choiceA" @bind-Value="model.ChoiceA" />
+            </label>
+
+            <label>
+                Choice B:
+                <InputCheckbox type="checkbox" id="choiceA" @bind-Value="model.ChoiceB" />
+            </label>
+
+            <label>
+                Choice C:
+                <InputCheckbox type="checkbox" id="choiceA" @bind-Value="model.ChoiceC" />
+            </label>
+
+            <button type="submit">Submit</button>
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+        </EditForm>
+
+        @if (formIsValid)
+        {
+            <p>The form is valid, well done for checking at least one of the checkboxes.</p>
+        }
+
+        @code{
+            ModelForForm model;
+            EditContext editContext;
+            bool formIsValid;
+
+            protected void Initialize_Model_Extra()
+            {
+                model = new ModelForForm();
+                editContext = new EditContext(model);
+            }
+
+            private void HandleSubmit()
+            {
+                var isValid = editContext.Validate();
+                if (isValid)
+                {
+                    // Set form is valid for the purposes of the sample, just to show that the form is valid.
+                    formIsValid = true;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            private class ModelForForm
+            {
+                public bool ChoiceA { get; set; }
+
+                public bool ChoiceB { get; set; }
+
+                public bool ChoiceC { get; set; }
+
+                [Required]
+                [Range(typeof(bool), "true", "true", ErrorMessage = "At least one choice is required.")]
+                public bool OneChoiceSelected
+                {
+                    get
+                    {
+                        return ((ChoiceA) || (ChoiceB) || (ChoiceC));
+                    }
+                    set { }
+                }
+            }
+        }
+
+        <blockquote>
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
+    </details>
+</article>
+
+
+<article>
+    <details>
+        <summary role="button" class="secondary">Using <code>&lt;InputRadioGroup&gt;</code> Components</summary>
+        <article>
+            <p>This example was taken and adapted from a <a href="https://stackoverflow.com/a/66418698" target="_blank" rel="noopener noreferrer">Stack Overflow answer</a>.</p>
+        </article>
+        <EditForm Model="Automobile">
+            <InputRadioGroup @bind-Value="@Automobile.SelectedManufacturer">
+                Manufacturer:
+                <br>
+                @foreach (var manufacturer in Manufacturers)
+                {
+                    <InputRadio Value="manufacturer" />
+                    @manufacturer
+                    <br>
+                }
+            </InputRadioGroup>
+        </EditForm>
+
+
+        @code {
+
+        List<String> Manufacturers = new List<string> { "Ford", "Toyota", "Tesla" };
+
+        AutomobileInfo Automobile = new AutomobileInfo();
+
+            class AutomobileInfo
+            {
+                public string SelectedManufacturer { get; set; } = "Tesla";
+            }
+        }
+        <blockquote>
+            Selected <mark>@Automobile?.SelectedManufacturer</mark> from the list <i>@string.Join(", ", Manufacturers)</i>.
+            <footer><cite>&ndash; Output will appear above</cite></footer>
+        </blockquote>
     </details>
 </article>
