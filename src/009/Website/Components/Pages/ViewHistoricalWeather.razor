@@ -1,0 +1,127 @@
+﻿@page "/ViewHistoricalWeather"
+@rendermode InteractiveServer
+@using WeatherSystem
+@using static WeatherSystem.CsvRepository
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+<PageTitle>View Historical Weather</PageTitle>
+
+<h1>View Historical Weather</h1>
+
+@code {
+    // Don't put any HTML tags inside a @code {} block
+    [SupplyParameterFromForm(FormName = "PickFile")] // <-- Only valid on Properties or Indexers, not fields
+    private string? SelectedCsv { get; set; }
+
+    private IEnumerable<string>? Files;
+    private IQueryable<Weather>? Records { get; set; }
+    private List<string>? ParsingErrors { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        Files = Directory.EnumerateFiles("Data", "*.csv");
+        Records = new List<Weather>().AsQueryable();
+    }
+
+    private Location? Place;
+
+    private void LoadRecords()
+    {
+        if (string.IsNullOrEmpty(SelectedCsv))
+        {
+            // Clear the existing records
+            Place = null;
+            Records = null;
+            ParsingErrors = null;
+        }
+        else
+        {
+            Records = null;
+            StateHasChanged();
+            // Use the file as the basis for loading the data
+            Place = GetLocation(SelectedCsv);
+            ReadWeatherData();
+        }
+    }
+
+    private void ReadWeatherData()
+    {
+        List<Weather> data = new();
+        ParsingErrors = new();
+        foreach(var row in GetWeatherCSV(SelectedCsv!))
+        {
+            try
+            {
+                data.Add(Weather.Parse(row));
+            }
+            catch(FormatException ex)
+            {
+                ParsingErrors.Add(ex.Message);
+            }
+        }
+        Records = data.AsQueryable();
+    }
+}
+
+@if (Files is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    // Note how the following form wants the drop-down to bind to a
+    // primitive member of this page - SelectedCsv.
+    // In this case, the Model for the <EditForm> must be this instance
+    // of this page (the this keyword in C#)
+    <EditForm Model="this" OnSubmit="LoadRecords" FormName="PickFile">
+        <label>
+            Select a file
+            <InputSelect @bind-Value="SelectedCsv" @onchange="LoadRecords">
+                <option value="">[none]</option>
+                @foreach (var file in Files)
+                {
+                    <option value="@file">@Path.GetFileName(file)</option>
+                }
+            </InputSelect>
+        </label>
+        <button type="submit">Load Data</button>
+    </EditForm>
+}
+
+@if (Place is not null)
+{
+    <p><mark>@Place.ToString()</mark> - <i>Future implementations might show a map of the location, since we have lat/long coordinates.</i></p>
+}
+else
+{
+    <p>Select a file to view historical weather information.</p>
+}
+
+@if(Records is null)
+{
+    <i>Loading Weather Records...</i>
+}
+else
+{
+    <h4>There are @Records.Count() temperature measurements in this file.</h4>
+    <p><i>Sorting has been disabled (since it makes little sense for this kind of data).</i></p>
+    if(ParsingErrors is not null && ParsingErrors.Count > 0)
+    {
+        <div>
+            <p>Please note the following errors when reading the data:</p>
+            <ul>
+                @foreach(var item in ParsingErrors)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+    }
+    <QuickGrid Items="@Records">
+        <PropertyColumn Property="@(x => x.Time.ToShortDateString())" Sortable="false" Title="Date" />
+        <PropertyColumn Property="@(x => x.Time.ToShortTimeString())" Sortable="false" Title="Time of Measurement" />
+        <PropertyColumn Property="@(x => x.Temperature)" Sortable="false" />
+        <PropertyColumn Property="@(x => x.WindSpeed)" Sortable="false" />
+        <PropertyColumn Property="@(x => x.WindChill == null ? x.Temperature : x.WindChill.FeelsLike)" Title="Wind Chill" />
+    </QuickGrid>
+}

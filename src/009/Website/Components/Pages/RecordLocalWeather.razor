@@ -1,0 +1,94 @@
+﻿@page "/RecordLocalWeather"
+@rendermode InteractiveServer
+@using WeatherSystem
+
+<PageTitle>Record Local Weather</PageTitle>
+
+<h1>Record Local Weather</h1>
+
+@code {
+    // Don't put any HTML tags inside a @code {} block
+    [SupplyParameterFromForm(FormName = "PickFile")] // <-- Only valid on Properties or Indexers, not fields
+    private string? SelectedCsv { get; set; }
+    private bool DisableWeatherForm => string.IsNullOrWhiteSpace(SelectedCsv);
+
+    private IEnumerable<string>? Files;
+
+    [SupplyParameterFromForm(FormName="RecordData")]
+    private Weather? NewInfo { get; set; }
+    private EditContext? WeatherContext { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Files = Directory.EnumerateFiles("Data", "*.csv");
+        NewInfo = new();
+        WeatherContext = new(NewInfo);
+    }
+
+    private void RecordWeatherMeasurements()
+    {
+
+    }
+}
+
+<EditForm Model="this" FormName="PickFile">
+    <label>
+        Select a file
+        <InputSelect @bind-Value="SelectedCsv" autofocus>
+            <option value="">[none]</option>
+            @foreach (var file in Files!)
+            {
+                <option value="@file">@Path.GetFileName(file)</option>
+            }
+        </InputSelect>
+    </label>
+    <button type="submit">Load Data</button>
+</EditForm>
+
+@if(string.IsNullOrWhiteSpace(SelectedCsv))
+{
+    <p>Please select a destination file for the record before proceeding to enter Weather information.</p>
+}
+else
+{
+    <p>Use the following form to record your weather station measurements.</p>
+}
+<fieldset disabled="@DisableWeatherForm">
+   
+<EditForm EditContext="WeatherContext" FormName="RecordData" OnValidSubmit="RecordWeatherMeasurements">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label>
+        Date/Time of Measurement
+        <InputDate @bind-Value="NewInfo!.Time" Type="InputDateType.DateTimeLocal" />
+    </label>
+    <label>
+        Temperature (°C)
+        <InputNumber @bind-Value="NewInfo!.Temperature" />
+    </label>
+    <label>
+        Wind Speed (km/h)
+        <InputNumber @bind-Value="NewInfo!.WindSpeed" />
+    </label>
+    <label>
+        Wind Gusts (km/h)
+        <InputNumber @bind-Value="NewInfo!.WindGusts" />
+    </label>
+    <button type="submit">Record Information</button>
+</EditForm>
+</fieldset>
+
+
+
+
+
+
+<fieldset>
+    <legend>Diagnostics <i>- remove after completed</i></legend>
+    <style>fieldset code { border: solid thin grey; padding: 0 .5em; }</style>
+
+    <ul>
+        <li><b>@nameof(SelectedCsv)</b>: <code>@SelectedCsv</code></li>
+        <li><b>@nameof(NewInfo)</b>: <code>@NewInfo</code></li>
+    </ul>
+</fieldset>
