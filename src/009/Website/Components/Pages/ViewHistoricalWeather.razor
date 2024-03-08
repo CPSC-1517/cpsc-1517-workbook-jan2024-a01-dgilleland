@@ -16,14 +16,15 @@
     private IEnumerable<string>? Files;
     private IQueryable<Weather>? Records { get; set; }
     private List<string>? ParsingErrors { get; set; }
-    
+
+    private Location? Place;
+
+    #region Methods    
     protected override void OnInitialized()
     {
         Files = Directory.EnumerateFiles("Data", "*.csv");
         Records = new List<Weather>().AsQueryable();
     }
-
-    private Location? Place;
 
     private void LoadRecords()
     {
@@ -37,7 +38,6 @@
         else
         {
             Records = null;
-            StateHasChanged();
             // Use the file as the basis for loading the data
             Place = GetLocation(SelectedCsv);
             ReadWeatherData();
@@ -48,7 +48,7 @@
     {
         List<Weather> data = new();
         ParsingErrors = new();
-        foreach(var row in GetWeatherCSV(SelectedCsv!))
+        foreach(var row in GetWeatherCSV(SelectedCsv))
         {
             try
             {
@@ -61,6 +61,7 @@
         }
         Records = data.AsQueryable();
     }
+    #endregion
 }
 
 @if (Files is null)
