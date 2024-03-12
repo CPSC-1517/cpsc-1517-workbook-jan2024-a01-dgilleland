@@ -5,7 +5,12 @@ namespace WeatherSystem;
 
 public class Weather
 {
+    /// <summary>
+    /// A parameterless constructor (as this class is acting as a DTO)
+    /// </summary>
     public Weather() { }
+
+    // I removed the greedy constructor
     // public Weather(DateTime time, double temp, double wind, double gust)
     // {
     //     this.Time = time;
@@ -46,6 +51,7 @@ public class Weather
         // NOTE: I switched from my greedy constructor to 
         // an initializer list
         Weather result = new()
+        // the following is an Initializer List
         {
             Time = time,
             Temperature = temp,

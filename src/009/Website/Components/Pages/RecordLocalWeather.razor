@@ -21,13 +21,31 @@
     protected override void OnInitialized()
     {
         Files = Directory.EnumerateFiles("Data", "*.csv");
-        NewInfo = new();
+        NewInfo = new(); // This is an empty Weather record
         WeatherContext = new(NewInfo);
     }
-
+    private string? UserFeedback;
     private void RecordWeatherMeasurements()
     {
+        try
+        {
+            // For your exercise, you can just hard-code the path to the file
+            // BUT it must be an App-relative path (i.e.: relative to the root of your application) 
+            CsvRepository.AddWeatherReport(SelectedCsv!, NewInfo!);
 
+            // Give some kind of user feedback
+            UserFeedback = "Data successfully recorded.";
+            // Reset the weather object
+            NewInfo = new();
+            // Sometimes you will need to tell the browser that the data model has updated
+            @* StateHasChanged(); *@
+        }
+        catch(Exception ex)
+        {
+            // This is adequate during development, but you should have friendly responses
+            // in a production environment
+            UserFeedback = $"An unexpected error happened: {ex.Message}";
+        }
     }
 }
 
@@ -42,7 +60,7 @@
             }
         </InputSelect>
     </label>
-    <button type="submit">Load Data</button>
+    <button type="submit">Select CSV File</button>
 </EditForm>
 
 @if(string.IsNullOrWhiteSpace(SelectedCsv))
@@ -54,7 +72,11 @@ else
     <p>Use the following form to record your weather station measurements.</p>
 }
 <fieldset disabled="@DisableWeatherForm">
-   
+    @if(!string.IsNullOrWhiteSpace(UserFeedback))
+    {
+        <blockquote>@UserFeedback</blockquote>
+    }
+@* My fieldset is wrapping my EditForm to allow my disabling of the entire form in all browsers   *@
 <EditForm EditContext="WeatherContext" FormName="RecordData" OnValidSubmit="RecordWeatherMeasurements">
     <DataAnnotationsValidator />
     <ValidationSummary />
