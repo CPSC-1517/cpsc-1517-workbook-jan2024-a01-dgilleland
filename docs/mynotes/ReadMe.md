@@ -2,6 +2,10 @@
 
 - [Journal](./Journal.md)
 - [`git` Commands](./git-commands.md)
+- [Controlled Exit](./ControlledExit.md)
+- [Class Diagrams](./ClassDiagrams.md)
+- [Terminal Commands](./dos-commands.md)
+- [Parsing](./Parsing.md)
 
 ![Scuba](./images/stick_figure_scuba.gif)
 

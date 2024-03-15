@@ -3,35 +3,24 @@
 
 <PageTitle>Job Application</PageTitle>
 
-<style type="text/css">
-    label:before, .inline-block label:after {
-        content: ".";
-        clear: both;
-        display: block;
-        height: 0;
-        visibility: hidden;
-    }
-
-    .inline-block {
-        display: inline-block;
-        vertical-align: top;
-    }
-
-        .inline-block label:before {
-            content: ".";
-            clear: both;
-            display: inline;
-            height: 0;
-            visibility: hidden;
-        }
-</style>
-
 @code {
     private JobApplicant? Person { get; set; }
-        protected override void OnInitialized()
+    protected override void OnInitialized()
+    {
+        Person = new();
+    }
+    private void ToggleJob(ChangeEventArgs e, string job)
+    {
+        bool addJob = bool.Parse(e.Value.ToString());
+        if(addJob)
         {
-            Person = new();
+            Person.JobRoles.Add(job);
         }
+        else
+        {
+            Person.JobRoles.Remove(job);
+        }
+    }
 }
 <section>
     <h1>Job Application</h1>
@@ -46,32 +35,32 @@
         <input name="phoneNumber" type="tel" @bind-value="Person.PhoneNumber"
                 pattern="\d{3}[\-]\d{3}[\-]\d{4}"
                 title="Canadian/US Phone Number">
-        @* <label for="fullOrPartTime">Full/Part Time</label>
-        <div class="inline-block">
-            <input name="fullOrPartTime" type="radio" @bind="ApplyForFullTime" />
-            <label for="fullOrPartTime">Full time</label>
-            <input name="fullOrPartTime" type="radio" value="false"
-                    checked="@@("Part time".Equals(workAmount))">
-            <label for="fullOrPartTime_1">Part time</label>
-        </div>
-        <label for="jobIn">Jobs</label>
-        <div class="inline-block">
-            <input type="checkbox" name="jobIn" value="Sales"
-                    checked="@@(workArea.Contains("Sales"))">
+        <fieldset>
+            <legend>Full/Part Time</legend>
+            <div class="inline-block">
+                <input name="fullOrPartTime" id="fullTime" type="radio" @onchange="@(() => Person.IsFullTime = true)" />
+                <label for="fullTime">Full time</label>
+                <input name="fullOrPartTime" id="partTime" type="radio" @onchange="@(() => Person.IsFullTime = false)" />
+                <label for="partTime">Part time</label>
+            </div>
+        </fieldset>
+        <fieldset>
+        <legend>Jobs</legend>
+            <input type="checkbox" id="jobInSales" name="jobIn" value="Sales" @onchange="@((evt) => ToggleJob(evt, "Sales"))" />
             <label for="jobInSales">Sales</label>
 
-            <input type="checkbox" name="jobIn" value="Manufacturing"
-                    checked="@@(workArea.Contains("Manufacturing"))">
+            <input type="checkbox" id="jobInManufacturing" name="jobIn" value="Manufacturing"
+                    @onchange="@((evt) => ToggleJob(evt, "Manufacturing"))">
             <label for="jobInManufacturing">Manufacturing</label>
 
-            <input type="checkbox" name="jobIn" value="Accounting"
-                    checked="@(workArea.Contains("Accounting"))">
+            <input type="checkbox" id="jobInAccounting" name="jobIn" value="Accounting"
+                    @onchange="@((evt) => ToggleJob(evt, "Accounting"))">
             <label for="jobInAccounting">Accounting</label>
 
-            <input type="checkbox" name="jobIn" value="ShippingReceiving"
-                    checked="@(workArea.Contains("ShippingReceiving"))">
+            <input type="checkbox" id="jobInShippingReceiving" name="jobIn" value="Shipping/Receiving"
+                    @onchange="@((evt) => ToggleJob(evt, "Shipping/Receiving"))">
             <label for="jobInShippingReceiving">Shipping/Receiving</label>
-        </div> *@
+        </fieldset>
     </fieldset>
     <fieldset class="grid">
         <input name="submit" type="submit" value="Submit" />
@@ -106,3 +95,14 @@
             break;
     }
 } *@
+
+<article>
+    <h4>Diagnostics</h4>
+    <ul>
+        <li><b>Full Name:</b> @Person.FullName</li>
+        <li><b>Is Full Time:</b> @Person.IsFullTime</li>
+        <li><b>Phone:</b> @Person.PhoneNumber</li>
+        <li><b>Jobs:</b> @string.Join(", ", Person.JobRoles)</li>
+        <li><b>:</b> </li>
+    </ul>
+</article>

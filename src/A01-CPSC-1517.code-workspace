@@ -23,6 +23,12 @@
 		},
 		{
 			"path": "008"
+		},
+		{
+			"path": "009"
+		},
+		{
+			"path": "Sandbox"
 		}
 	],
 	"settings": {}

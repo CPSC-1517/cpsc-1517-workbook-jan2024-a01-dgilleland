@@ -5,13 +5,14 @@
 <HeadContent>
     <link rel="stylesheet" href="app.pico.css" />
 </HeadContent>
+
 <section>
     <h1>Create Bank Account</h1>
     <p>Fill in the following form and click Submit.</p>
     <fieldset>
         <legend>New Account</legend>
         <label for="accountHolder">Account Holder</label>
-        <input id="accountHolder" @bind-value="Account.Holder" />
+        <input id="accountHolder" @bind-value="Account!.Holder" />
         <label for="accountNumber">Account Number</label>
         <input id="accountNumber" @bind-value="Account.Number" />
         <label for="openingBalance">Opening Balance</label>
@@ -40,9 +41,9 @@
 
 @code{
     // TODO: Create a class to model the data, along with an enumeration for the account type
-    private BankAccount Account { get; set; }
+    private BankAccount? Account { get; set; }
     private bool RequestedNewAccount { get; set; }
-    private string Feedback { get; set; }
+    private string? Feedback { get; set; }
 
     protected override void OnInitialized()
     {

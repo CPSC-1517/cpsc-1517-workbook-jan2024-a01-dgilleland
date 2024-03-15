@@ -1,11 +1,12 @@
 # Demos, Tutorials and Practice Materials
 
+[Jump to the list of Workbook Demos](#workbook-demos)
+
 > You are encouraged to treat this folder as a **working directory** for demos, tutorials and practice assignments.
 >
 > :warning: **Do *NOT*** use this repository for any assignments that are worth marks. :warning:
 
 ## Instructor-Supplied Code Samples
-
 
 If there is a sample in your instructor's workbook that you want to pull into your own workbook, the easiest way to do that is through a Node package called [**tiged**](https://github.com/tiged/tiged#readme). Here's an example of how to use it to [grab a subdirectory](https://github.com/tiged/tiged#specify-a-subdirectory) from your instructor's workbook:
 
@@ -28,7 +29,7 @@ $ pnpm dlx tiged --disable-cache --force DMIT-1234/Instructor-Workbook/src/008/d
 // |    |          |          |- Force overwrite of existing files
 // |    |          |- Disable caching of repo (so you grab the latest version)
 // |    |- Command to run
-// |- pnpm dlx is a Node package runner (comes with Node)
+// |- pnpm dlx is an equivalent of the Node npx package runner
 ```
 
 ----
@@ -47,7 +48,21 @@ There are three things you must continually master as you go through your IT car
 - Know your **programming language** and environment
 - Know your **tools**
 
-## :100: In-Class Demos and Practice
+----
+
+## Workbook Demos
+
+### :100: In-Class Demos and Practice
+
+- 000 - Course Introduction
+- 001 - VS Code, the Terminal, and Markdown
+- 002 - More Markdown
+- 003 - Intro to C# in VS Code: Projects and Solutions
+- 004 - Top-Level Programs
+- 005 - Assorted C# Classes and Unit Tests
+- 006 - Blazor Intro
+- 007 - Blazor Empty Templates
+- 008 - HTML Form Elements in Blazor
 
 | Week | Demos :+1: |
 |:----:| ----- |

@@ -48,15 +48,22 @@
     {
         List<Weather> data = new();
         ParsingErrors = new();
-        foreach(var row in GetWeatherCSV(SelectedCsv))
+        if(string.IsNullOrWhiteSpace(SelectedCsv))
         {
-            try
+            ParsingErrors.Add("No CSV file was identifid");
+        }
+        else
+        {
+            foreach(var row in GetWeatherCSV(SelectedCsv))
             {
-                data.Add(Weather.Parse(row));
-            }
-            catch(FormatException ex)
-            {
-                ParsingErrors.Add(ex.Message);
+                try
+                {
+                    data.Add(Weather.Parse(row));
+                }
+                catch(FormatException ex)
+                {
+                    ParsingErrors.Add(ex.Message);
+                }
             }
         }
         Records = data.AsQueryable();

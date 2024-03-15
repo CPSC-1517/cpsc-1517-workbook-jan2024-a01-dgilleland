@@ -71,12 +71,15 @@ At the end of the term, your repositories on the [CPSC-1517 GitHub Organization]
 
 ## ![Software et.al.](./docs/images/code.png) Software & Resources
 
+> *Sign up for the [GitHub Classroom Student Pack](https://education.github.com/pack).*
+
 Required tools for this course include:
 
 - **.NET SDKs**
   - You should be prepared to have the appropriate versions of .NET Core SDKs (*Software Development Kit*) installed on your computer. You can find the latest versions at [dot.net](https://dot.net).
 - **Command-Line Tools**
   - [**Git** for Windows/macOS/Linux](https://git-scm.com/downloads)
+    - As soon as you have installed git, you will need to set up your global configuration. Follow [*these instructions*](#configuring-git).
   - [**GitHub CLI**](https://cli.github.com/)
   - [**node**](https://nodejs.org/en/download/) (which includes **npm**) - Node is a run-time that allows you to use JavaScript on the web server. It comes along with npm (*Node Package Manager*), a package-management tool for the command line that allows you to integrate 3rd-party libraries with your application.
 - **Visual Studio** - *Your Instructor may have a preference for which IDE you use.*
@@ -104,4 +107,22 @@ Other recommended resources include:
 
 - [Learn Markdown](https://commonmark.org/help/)
 - [Programming Fundamentals - An Object-Oriented Introduction to Programming in C#](https://programming-0101.github.io/TheBook/)
+
+----
+
+## Configuring Git
+
+Ensure that git knows your username and email. You can find out if it is configured on your computer by running the following commands in the terminal.
+
+```ps
+git config --global user.name
+git config --global user.email
+```
+
+If there is no information on your user name or email in the git configuration, run the following code, replacing the username and email information with your personal information.
+
+```ps
+git config --global user.name "Your Full Name"
+git config --global user.email "YourSchoolEmail@nait.ca"
+```
 

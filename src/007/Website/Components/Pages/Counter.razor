@@ -8,9 +8,10 @@
    for the compiler. *@
 
 @rendermode InteractiveServer
-@* ^^^^ Blaor support different "render modes" which affect "where" the page's HTML, etc. is generated (or "rendered") *@
+@*^^^ Blazor supports different "render modes" which affect "where" the page's HTML, etc. is generated (or "rendered")*@
 
 <PageTitle>Counter (the Traditional Example)</PageTitle>
+@*^^^^  The title of your page in the browser tab ^^^^*@
 
 <aside>
     <p>The current date/time is @RightNow.</p>
@@ -48,3 +49,11 @@
         CurrentCount -= Amount;
     }
 }
+
+<blockquote class="card">
+    <h4>Diagnostics</h4>
+    <ul>
+        <li>CurrentCount: @CurrentCount</li>
+        <li>Amount: @Amount</li>
+    </ul>
+</blockquote>

@@ -10,6 +10,170 @@
 @* This <PageTitle> is NOT an HTML tag! It's a built-in Blazor component. *@
 <PageTitle>Contest Entry Demo</PageTitle>
 
+<section>
+    <h1>Contest Entry</h1>
+    <p>Please fill out the following form to enter the contest. This contest is only available to residents in Western Canada.</p>
+
+    @if(IsSubmitted){
+        <blockquote>Thank you <b @onclick="ToggleContestantDetails">@Contestant</b> for entering the contest. A confirmation will be sent to you at @(Contestant!.Email).</blockquote>
+        @* Note the use of parenthesis for the email information above; this is because the value needs to be isolated from the literal period for the end of the sentence. *@
+
+        if(ShowContestantDetails)
+        {
+            <p>Your entry information is as follows:</p>
+            <ul>
+                <li>Full Name: <b>@(Contestant.FirstName + " " + Contestant.LastName)</b></li>
+                <li>Email: <b>@Contestant.Email</b></li>
+                <li>Address: <b>@BuildAddressInfo()</b></li>
+            </ul>
+            <button type="button" @onclick="ResetForm">Enter again</button>
+            <blockquote>
+                <i>NOTE:</i> Only those who accepted the terms will be eligible for the prizes.
+                <label><input type="checkbox" checked="@AgreeToTerms" onclick="alert('Try entering again'); return false;" /> Entrant Agreed.</label>
+            </blockquote>
+        }
+        else
+        {
+            <button type="button" @onclick="ShowContestant">Show your submitted details</button>
+        }
+    }
+    else
+    {
+        <fieldset>
+            <legend>Application Form</legend>
+
+            @if(Contestant is null)
+            {
+                <p>Loading...</p>
+            }
+            else
+            {
+                <!-- These first two sets of label and input elements include
+                    the attributes of 
+                    - for
+                    - id
+                    in order to associate the label with the input. -->
+                <label for="firstName">First Name</label>
+                <input id="firstName" type="text" @bind-value="Contestant.FirstName">
+
+                <label for="lastName">Last Name</label>
+                <input id="lastName" type="text" @bind-value="Contestant.LastName">
+
+                <!-- When an input is nested inside the label element,
+                    the label is automatically associated with that input -->
+                <label>
+                    Email
+                    <input type="email" @bind-value="Contestant.Email" />
+                </label>
+
+                <fieldset class="grid">
+                    <legend>Street Address</legend>
+                    <input @bind-value="Contestant.Street_1" placeholder="Street Address 1" />
+                    <input type="text" @bind-value="Contestant.Street_2" placeholder="Street Address 2" />
+                </fieldset>
+
+                <fieldset class="grid">
+                    <label>City
+                        <input type="text" @bind-value="Contestant.City" />
+                    </label>
+
+                    <label>Province/Territory
+                        <select @bind="Contestant.Province">
+                            <option value="">(select a province)</option>
+                            <option value="AB">AB</option>
+                            <option value="BC">BC</option>
+                            <option value="MB">MB</option>
+                            <option value="NB">NB</option>
+                            <option value="NS">NS</option>
+                            <option value="NT">NT</option>
+                            <option value="NU">NU</option>
+                            <option value="ON">ON</option>
+                            <option value="PE">PE</option>
+                            <option value="QC">QC</option>
+                            <option value="SK">SK</option>
+                            <option value="YT">YT</option>
+                        </select>
+                    </label>
+
+                    <label>Postal Code
+                        <input type="text" @bind-value="Contestant.PostalCode" />
+                    </label>
+                </fieldset>
+
+                <p>
+                    Note: You must agree to the contest terms in order to be entered.<br>
+                    <label for="agreeToTerms">
+                        <input type="checkbox" required @bind-value="AgreeToTerms">
+                        I agree to the terms of the contest.
+                    </label>
+                </p>
+            }
+        </fieldset>
+        <input type="button" value="Enter Contest" @onclick="EnterContest">
+    }
+</section>
+
+
+@code {
+    /* Do NOT put HTML inside of a @code{} block */
+
+    #region Properties and Fields
+    // You can use properties to hold model data
+    private bool IsSubmitted { get; set; }
+    private bool AgreeToTerms { get; set; }
+    // Or you can use fields to hold model data
+    private bool ShowContestantDetails; 
+
+    // Contestant is an Applicant object and can be null
+    private Applicant? Contestant { get; set; }
+    #endregion
+
+    #region OnIntialized method acts as the constructor proxy
+    // Because Contestant can start out as null, we should initialize
+    protected override void OnInitialized()
+    {
+        Contestant = new();
+    }
+    #endregion
+
+    #region Other Methods
+    private void EnterContest()
+    {
+        // I can do stuff with the ContestApplicant info now.
+        IsSubmitted = true;
+    }
+
+    private void ToggleContestantDetails()
+    {
+        ShowContestantDetails = !ShowContestantDetails;
+    }
+
+    private void ShowContestant()
+    {
+        ShowContestantDetails = true;
+    }
+
+    private string BuildAddressInfo()
+    {
+        string result = string.Empty;
+        if(Contestant is not null)
+        {
+            result = $"{Contestant.Street_1} {Contestant.Street_1} {Contestant.City} {Contestant.Province} {Contestant.PostalCode}";
+        }
+        return result;
+    }
+
+    private void ResetForm(MouseEventArgs e)
+    {
+        // Just reset everything
+        Contestant = new();
+        // Quick'n'dirty reset of booleans...
+        ShowContestantDetails = AgreeToTerms = IsSubmitted = false;
+    }
+    #endregion
+}
+
+
 <style type="text/css">
     fieldset > legend {
     padding-left: calc(var(--pico-spacing) * .5);
@@ -24,120 +188,3 @@
     color: var(--pico-accordion-active-summary-color);
 }
 </style>
-
-<section>
-    <h1>Contest Entry</h1>
-    <p>Please fill out the following form to enter the contest. This contest is only available to residents in Western Canada.</p>
-
-    @if(IsSubmitted){
-        <blockquote>Thank you <b @onclick="ToggleContestantDetails">@Contestant</b> for entering the contest. A confirmation will be sent to you at @(Contestant.Email).</blockquote>
-        @* Note the use of parenthesis for the email information above; this is because the value needs to be isolated from the literal period for the end of the sentence. *@
-
-        if(ShowContestantDetails)
-        {
-            <p>TODO: Show the contestant details entered in the form.</p>
-        }
-    }
-    else
-    {
-        <fieldset>
-            <legend>Application Form</legend>
-
-            <!-- These first two sets of label and input elements include
-                the attributes of 
-                - for
-                - id
-                in order to associate the label with the input. -->
-            <label for="firstName">First Name</label>
-            <input id="firstName" type="text" @bind-value="Contestant.FirstName">
-
-            <label for="lastName">Last Name</label>
-            <input id="lastName" type="text" @bind-value="Contestant.LastName">
-
-            <!-- When an input is nested inside the label element,
-                the label is automatically associated with that input -->
-            <label>
-                Email
-                <input type="email" @bind-value="Contestant.Email" />
-            </label>
-
-            <fieldset class="grid">
-                <legend>Street Address</legend>
-                <input @bind-value="Contestant.Street_1" placeholder="Street Address 1" />
-                <input type="text" @bind-value="Contestant.Street_2" placeholder="Street Address 2" />
-            </fieldset>
-
-            <fieldset class="grid">
-                <label>
-                    City
-                    <input type="text" @bind-value="Contestant.City" />
-                </label>
-
-                <label>
-                    Province/Territory
-                    <select @bind="Contestant.Province">
-                        <option value="">(select a province)</option>
-                        <option value="AB">AB</option>
-                        <option value="BC">BC</option>
-                        <option value="MB">MB</option>
-                        <option value="NB">NB</option>
-                        <option value="NS">NS</option>
-                        <option value="NT">NT</option>
-                        <option value="NU">NU</option>
-                        <option value="ON">ON</option>
-                        <option value="PE">PE</option>
-                        <option value="QC">QC</option>
-                        <option value="SK">SK</option>
-                        <option value="YT">YT</option>
-                    </select>
-                </label>
-
-                <label>
-                    Postal Code
-                    <input type="text" @bind-value="Contestant.PostalCode" />
-                </label>
-            </fieldset>
-
-            <p>
-                Note: You must agree to the contest terms in order to be entered.<br>
-                <label for="agreeToTerms">
-                    <input type="checkbox" required @bind-value="AgreeToTerms">
-                    I agree to the terms of the contest.
-                </label>
-            </p>
-        </fieldset>
-        <input type="button" value="Enter Contest" @onclick="EnterContest">
-    }
-</section>
-
-
-@code {
-    #region Properties and Fields
-    // You can use properties to hold model data
-    private bool IsSubmitted { get; set; }
-    // Or you can use fields to hold model data
-    private bool ShowContestantDetails; 
-
-    private bool AgreeToTerms { get; set; }
-    // Contestant is an Applicant object and can be null
-    private Applicant? Contestant { get; set; }
-    #endregion
-
-    // Because Contestant can start out as null, we should initialize
-    protected override void OnInitialized()
-    {
-        Contestant = new();
-    }
-
-    private void EnterContest()
-    {
-        // I can do stuff with the ContestApplicant info now.
-        IsSubmitted = true;
-    }
-    
-    private void ToggleContestantDetails()
-    {
-        ShowContestantDetails = !ShowContestantDetails;
-    }
-}
-
