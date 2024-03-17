@@ -82,7 +82,7 @@ else
         <blockquote>@UserFeedback</blockquote>
     }
 @* My fieldset is wrapping my EditForm to allow my disabling of the entire form in all browsers   *@
-<EditForm EditContext="WeatherContext" FormName="RecordData" OnSubmit="RecordWeatherMeasurements">
+<EditForm EditContext="WeatherContext" FormName="RecordData" OnValidSubmit="RecordWeatherMeasurements">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <label>
