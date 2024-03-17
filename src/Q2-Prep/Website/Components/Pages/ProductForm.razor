@@ -1,0 +1,34 @@
+﻿@page "/ProductForm"
+@rendermode InteractiveServer
+@using InventorySystem
+
+<PageTitle>Inventory Product Generation</PageTitle>
+
+<h1>Inventory Product</h1>
+
+@code {
+    public string? UserFeedback { get; set; }
+    @* Step 1 - Set up your model as properties *@
+
+    protected override void OnInitialized()
+    {
+        @* Step 2 - Perform any initialization *@
+        base.OnInitialized();
+    }
+
+    private void HandleSubmit()
+    {
+        @* Step 4 - Process the form *@
+        // TODO: Something to save info
+        // TODO: Give feedback to the user
+    }
+
+    private void ClearForm()
+    {
+        @* Step 5a - Create a method to reset the form/model *@
+    }
+}
+
+<p>@UserFeedback</p>
+
+@* Step 3 - Build a form for user input (presuming you at least have a method for handling submit) *@
