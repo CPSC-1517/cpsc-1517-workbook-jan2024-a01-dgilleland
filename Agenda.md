@@ -287,6 +287,17 @@ Note that each time you run this, it will overwrite the existing content in that
 
 ----
 
+## Mar 19
+
+- [ ] Quiz 2 Prep
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/Q2-Prep ./src/Q2-Prep
+    ```
+
+
+----
+
 ## *Future - TBD*
 
 > ***TODO:** Consolodate these ideas with the other section (Beyond Compare)*
