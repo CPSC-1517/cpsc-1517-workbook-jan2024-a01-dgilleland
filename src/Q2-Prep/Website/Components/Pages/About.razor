@@ -19,21 +19,8 @@
             UserFeedback = string.Empty;
             Product = new() { ProductId = Guid.NewGuid() };
 
-            List<Product> products = new();
-            string[] lines = File.ReadAllLines(_DataFile);
-            foreach (var line in lines)
-            {
-                try
-                {
-                    products.Add(Product.Parse(line));
-                }
-                catch (Exception ex)
-                {
-                    UserFeedback += ex.Message;
-                }
-            }
-            UserFeedback = $"Loaded {lines.Length} lines from the file. ";
-            Catalog = products.AsQueryable();
+            LoadProducts();
+            UserFeedback = $"Loaded {Catalog.Count()} lines from the file. ";
         }
     }
     <article>
@@ -50,6 +37,10 @@
                 // TODO: Something to save info
                 File.AppendAllLines(_DataFile, new string[] { Product!.ToString() });
                 // TODO: Give feedback to the user
+                UserFeedback = $"Saved information for the {Product.Name} product";
+                ClearForm(); // Just to reset the contents
+                LoadProducts();
+                
             }
 
             private void ClearForm()
@@ -98,6 +89,23 @@
     <article>
         <h2>Product Catalog</h2>
         @code {
+            private void LoadProducts()
+            {
+                List<Product> products = new();
+                string[] lines = File.ReadAllLines(_DataFile);
+                foreach (var line in lines)
+                {
+                    try
+                    {
+                        products.Add(Product.Parse(line));
+                    }
+                    catch (Exception ex)
+                    {
+                        UserFeedback += ex.Message;
+                    }
+                }
+                Catalog = products.AsQueryable();
+            }
             private IQueryable<Product>? Catalog { get; set; }
             private string Abbreviate(int restockQty, int returnQty)
             {

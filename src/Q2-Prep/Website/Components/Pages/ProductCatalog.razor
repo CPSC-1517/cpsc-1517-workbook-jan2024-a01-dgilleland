@@ -1,9 +1,23 @@
 ﻿@page "/ProductCatalog"
 @rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using InventorySystem
+
 <PageTitle>Product Catalog Listing</PageTitle>
 
-<h1>Product Catalog</h1>
+<h1><i class="las la-boxes"></i> Product Catalog</h1>
 
 @code {
+    @* Step 1 - Declare a property for your products as an IQueryable<Product> *@
 
+    protected override void OnInitialized()
+    {
+        @* Step 2 - Load up the data in the OnInitialized() event handler *@
+    }
 }
+
+@* Step 3 - Generate a <QuickGrid></QuickGrid> to show all the product information *@
+
+
+<hr />
+@* Step 0 - You might want a little "diagnostics" display, perhaps in a <blockquote></blockquote> *@
