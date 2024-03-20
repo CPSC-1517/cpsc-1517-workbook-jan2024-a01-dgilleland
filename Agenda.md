@@ -1,10 +1,14 @@
 # Agenda
 
+[![Quick Style](./docs/images/favicon.png) Quick Style](./src/008/Docs/Styling.md) instructions for *empty Blazor projects*. 
+
 > These are my notes on what I plan to teach in each [**upcoming class**](#mar-1). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ##### *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
 > > My philosophy of teaching, taken from [the source](https://www.bible.com/bible/111/1TH.5.14.NIV)
+
+----
 
 ## Code Samples
 
@@ -295,6 +299,17 @@ Note that each time you run this, it will overwrite the existing content in that
     pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/Q2-Prep ./src/Q2-Prep
     ```
 
+## Mar 20
+
+- [x] Quiz 2
+
+## Mar 22
+
+- [ ] Databases and Blazor using **WestWind** (see [`~/src/011`](./src/011/ReadMe.md))
+
+    ```ps
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/011 ./src/011
+    ```
 
 ----
 
