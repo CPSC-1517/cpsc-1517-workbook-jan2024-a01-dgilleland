@@ -308,7 +308,7 @@ Note that each time you run this, it will overwrite the existing content in that
 - [ ] Databases and Blazor using **WestWind** (see [`~/src/011`](./src/011/ReadMe.md))
 
     ```ps
-    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a02-dgilleland/src/011 ./src/011
+    pnpm dlx tiged --disable-cache --force CPSC-1517/cpsc-1517-workbook-jan2024-a01-dgilleland/src/011 ./src/011
     ```
 
 ----

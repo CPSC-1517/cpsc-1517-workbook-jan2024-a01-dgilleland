@@ -29,3 +29,27 @@ Open **SSMS** (*Sql Server Management Studio*) and begin by right-clicking on th
 ![Step 1](./Images/01-right-click-dacpac.png)
 
 The remaining steps are similar to the ones for the `.bacpac`.
+
+----
+
+## Determine Your SQL Server Installations
+
+You can run the following PowerShell command from the terminal to list your running instance(s) of SQL Server.
+
+```ps
+Get-Service | ?{ $_.Name -like "MSSQL*" }
+```
+
+If you have SQL Server installed, you should see something similar to the following (I'm just showing the database instances here):
+
+```
+Status   Name               DisplayName
+------   ----               -----------
+Running  MSSQL$SQLEXPRESS   SQL Server (SQLEXPRESS)
+Running  MSSQLSERVER        SQL Server (MSSQLSERVER)
+```
+
+From this list, I can see that I have two SQL Server instances running on my machine. The local machine can be referred to by the dot (`.`) alias.
+
+- **`.`** - The local, default installation (identified just by my computer name)
+- **`./SQLEXPRESS`** - A named instance on my local machine
