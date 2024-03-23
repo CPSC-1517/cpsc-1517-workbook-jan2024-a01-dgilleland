@@ -313,6 +313,30 @@ Note that each time you run this, it will overwrite the existing content in that
 
 ----
 
+## Mar 26
+
+- [ ] Continue Developing the WestWind Demo ([`~/src/011`](./src/011/ReadMe.md))
+  - [ ] **Business-Logic-Layer** - `ProductServices` class
+  - [ ] **Dependency-Injection** - `WestWindServices` class
+  - [ ] **Configuring Services** - `Program` class
+- [ ] Readings:
+  - [ ] [Lambdas and Delegates](https://dmit-2018.github.io/topics/linq/lambda.html)
+
+## Mar 27
+
+- [ ] Continue Developing the WestWind Demo ([`~/src/011`](./src/011/ReadMe.md))
+  - [ ] Product Catalog page
+  - [ ] Product Editing page
+
+## Mar 29
+
+- [ ] ***[Self-study]*** - Continue Developing the WestWind Demo ([`~/src/011`](./src/011/ReadMe.md))
+  - [ ] Complete any remaining demo work for Products CRUD
+  - [ ] Practice by creating CRUD services/pages for **Suppliers**
+  - [ ] Practice by creating CRUD services/pages for **Categories**
+
+----
+
 ## *Future - TBD*
 
 > ***TODO:** Consolodate these ideas with the other section (Beyond Compare)*
