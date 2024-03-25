@@ -8,7 +8,11 @@ Our empty template does not have a *favicon*; let's provide one by copying the [
 <link rel="icon" type="image/png" href="/favicon.png">
 ```
 
-We're going to want a few other images for a bit of "bling", so copy the [`Images` folder](./Images/) from this directory into the [`wwwroot` folder](../Website/wwwroot/).
+We're going to want a few other images for a bit of "bling", so copy the [`Images` folder](./Images/) from this directory into the [`wwwroot` folder](../Website/wwwroot/). Here are some of the key images from this folder that are of interest:
+
+|  |  |  |  |  |
+|--|--|--|--|--|
+| ![](./Images/icons8-database-32.png) | ![](./Images/icons8-database-96.png) | ![](./Images/icons8-internet-laces-72.png) | ![](./favicon.png) | ![](./Images/html-css-js-icons-11563328364gmstz4ubs9.png) |
 
 While we're at it, let's also add in a reference to the set of [**Line-Awesome**](https://icons8.com/line-awesome) icons via a CDN (*Content-Delivery Network*) resource. That way, we can throw in a couple of nice icons for buttons/links along our journey.
 

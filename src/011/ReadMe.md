@@ -4,7 +4,9 @@
 
 ![Products](./db/WestWind-2019-Products-SimplifiedClassDiagram.png)
 
-This demo will walk through the steps involved for creating simple CRUD-like pages to access and modify information in the database.
+This demo will walk through the steps involved for creating simple CRUD-like pages to access and modify information in the database. Before we begin the step-by-step, we need to get the database installed and the projects set up. Let's begin.
+
+> ***FYI:** The [SQL Server Extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) for Visual Studio Code is an excellent tool by Microsoft for connecting to and interacting with databases.*
 
 ## Demo Setup
 
@@ -21,6 +23,8 @@ dotnet sln add Website/WebApp.csproj
 cd Website
 dotnet add reference ../WWWCore/WestWindWholesale.csproj
 ```
+
+[Styling](../008/Docs/Styling.md) your empty Blazor app is a task left for you to complete on your own.
 
 ## Connections Strings
 
@@ -81,6 +85,10 @@ dotnet ef dbcontext scaffold "{connectionString}" Microsoft.EntityFrameworkCore.
 This command creates entity classes and a `DbContext` based on the schema of your existing database. The `-o Models` option puts the generated classes in the Models folder, and `--context-dir Contexts` puts the generated `DbContext` in the Contexts folder.
 
 Remember to replace `{connectionString}` and `{projectName}` with your actual connection string and project name.
+
+## Creating a CRUD App for WestWind Wholesale
+
+With the foundations of the project set up, it's time to move on to the [steps for creating a CRUD-based application](./StepByStep/ReadMe.md).
 
 ----
 
