@@ -4,7 +4,7 @@ Let's take some observations about the data stored in the Products table. Specif
 
 ![](./ProductsTable.png)
 
-As we allow the users of our Blazor page to enter product information, they will need to supply these foreign key values. But the user should be allowed to choose those values based on *meaningful* information. There are a number of ways to approach this, but we'll take the following. We'll create two additional services to get all the available categories and suppliers.
+As we allow the users of our Blazor page to enter product information, they will need to supply these foreign key values. But the user should be allowed to choose those values based on *meaningful* information. There are a number of ways to approach this, but we'll take the approach of creating two additional services to get all the available categories and suppliers.
 
 ## More BLL Services
 
@@ -230,6 +230,8 @@ Now it's time to save the user's input and provide some feedback. We'll also res
         {
             Id = ProductDbServices.AddProduct(Product!);
             UserFeedback = $"Product details have been added and assigned an Id of {Id}";
+            Product = new();
+            Id = 0;
         }
         catch(Exception ex)
         {
@@ -239,5 +241,7 @@ Now it's time to save the user's input and provide some feedback. We'll also res
 ```
 
 We'll also present the user feedback. Choose what you think is the most appropriate place to put the user feedback message. You might want it closer to where the user clicks the Add button, or you might want it near the top of the form. You might even want to consider some styling to make success and failure conditions more distinct for the user.
+
+The next step in our CRUD app is to support [product updates](./Step-4.md).
 
 > *:octocat: **Commit** your work now. :grey_exclamation:*

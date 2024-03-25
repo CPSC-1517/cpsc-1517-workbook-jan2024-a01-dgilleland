@@ -161,6 +161,6 @@ The `<QuickGrid>` supports automatic sorting of data by column. Add a `Sortable=
 > }
 > ```
 
-This produces a fairly complete tabular representation of all the WestWind products. It's time to move on toward editing.
+This produces a fairly complete tabular representation of all the WestWind products. It's time to move on to the [edit page](./Step-3.md).
 
 > *:octocat: **Commit** your work now. :grey_exclamation:*
