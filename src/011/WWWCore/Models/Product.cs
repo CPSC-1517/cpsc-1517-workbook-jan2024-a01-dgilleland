@@ -17,23 +17,30 @@ public partial class Product
     [Column("ProductID")]
     public int ProductId { get; set; }
 
+    [Required]
     [StringLength(40)]
     public string ProductName { get; set; } = null!;
 
+    [Range(1, int.MaxValue, ErrorMessage = "Each product must be associated with a supplier")]
     [Column("SupplierID")]
     public int SupplierId { get; set; }
 
+    [Range(1, int.MaxValue, ErrorMessage = "Each product must be categorized")]
     [Column("CategoryID")]
     public int CategoryId { get; set; }
 
+    [Required]
     [StringLength(20)]
     public string QuantityPerUnit { get; set; } = null!;
 
+    [Range(0, short.MaxValue, ErrorMessage = "Minimun Order Quantity cannot be negative")]
     public short? MinimumOrderQuantity { get; set; }
 
     [Column(TypeName = "money")]
+    [Range(typeof(decimal), "0", "100000", ErrorMessage = "Units on Order cannot be negative")]
     public decimal UnitPrice { get; set; }
 
+    [Range(0, int.MaxValue, ErrorMessage = "Units on Order cannot be negative")]
     public int UnitsOnOrder { get; set; }
 
     public bool Discontinued { get; set; }

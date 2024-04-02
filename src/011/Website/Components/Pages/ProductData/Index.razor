@@ -1,0 +1,123 @@
+﻿@page "/Product/Index"
+@rendermode InteractiveServer
+@using WestWindWholesale
+@using WestWindWholesale.Models
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject IJSRuntime JsRuntime
+@inject NavigationManager Navigator
+@inject ProductServices ProductDbServices
+
+<PageTitle>Product Catalog</PageTitle>
+
+<h1>Product Catalog</h1>
+
+@code {
+    PaginationState Paginator = new PaginationState { ItemsPerPage = 10 };
+    private IQueryable<Product>? Catalog { get; set; }
+    private string UserFeedback;
+
+    protected override void OnInitialized()
+
+    {
+        Catalog = ProductDbServices.GetProducts().AsQueryable();
+    }
+
+    private async Task DeleteProduct(int id, string name)
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete {name}?");
+        if (confirmed)
+        {
+            try
+            {
+                ProductDbServices.DeleteProduct(id);
+                UserFeedback = $"The product {name} has been removed from the database";
+                // Refresh the contents of the page/table
+                Catalog = ProductDbServices.GetProducts().AsQueryable();
+            }
+            catch (Exception ex)
+            {
+                UserFeedback = $"Unable to delete {name}. {ex.Message}";
+            }
+        }
+    }
+    private string? PartialProductName;
+    private void UpdateFilter()
+    {
+        if(string.IsNullOrWhiteSpace(PartialProductName))
+        {
+            Catalog = ProductDbServices.GetProducts().AsQueryable();
+        }
+        else
+        {
+            Catalog = ProductDbServices.GetProductsByProductName(PartialProductName.Trim()).AsQueryable();
+        }
+    }
+}
+
+<div class="page-size-chooser">
+    Items per page:
+    <select @bind="@Paginator.ItemsPerPage">
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>50</option>
+    </select>
+</div>
+
+@if(!string.IsNullOrWhiteSpace(UserFeedback))
+{
+    <blockquote>@UserFeedback</blockquote>
+}
+
+<QuickGrid Items="Catalog" Pagination="@Paginator">
+    <TemplateColumn Title="Edit" >
+        <a href="/Product/Edit/@(context.ProductId)"><i class="las la-edit"></i></a>
+        <a @onclick="@(ev => DeleteProduct(context.ProductId, context.ProductName))"><i class="las la-trash-alt"></i></a>
+    </TemplateColumn>
+    <PropertyColumn Property="@(item => item.ProductName)" Title="Product Name" Sortable="true">
+        <ColumnOptions>
+                <div class="search-box">
+                    <input type="search" autofocus @bind="PartialProductName" @bind:event="oninput" @bind:after="UpdateFilter" placeholder="Partial name..." />
+                </div>
+            </ColumnOptions>
+    </PropertyColumn>
+    <PropertyColumn Property="@(item => item.UnitsOnOrder)" Align="Align.Center" Title="On Order" />
+    <PropertyColumn Property="@(item => item.QuantityPerUnit)" Title="Qty/Unit" />
+    <PropertyColumn Property="@(item => item.UnitPrice)" Format="c" Align="Align.Right" Title="Unit Price" Sortable="true" />
+</QuickGrid>
+<Paginator State="@Paginator" />
+
+
+<style>
+    .col-justify-right {
+        text-align: right;
+    }
+    .col-justify-center {
+        text-align: right;
+    }
+
+    .quickgrid button.col-title {
+        background-color: var(--pico-primary-background);
+    }
+    .quickgrid[theme=default] button.col-title:hover {
+        background-color: rgba(128, 128, 128, 0.8);
+    }
+
+    .page-size-chooser {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .page-size-chooser select {
+        margin: 0 1rem;
+        padding: 0.25rem 0.5rem;
+    }
+</style>
+
+<blockquote>
+    <h4>Diagnostics</h4>
+    <ul>
+        <li>Product Count: @Catalog?.Count()</li>
+    </ul>
+</blockquote>
