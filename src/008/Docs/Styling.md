@@ -16,7 +16,10 @@ We're going to want a few other images for a bit of "bling", so copy the [`Image
 
 |  |  |  |  |  |
 |--|--|--|--|--|
-| ![](./Images/icons8-database-32.png) | ![](./Images/icons8-database-96.png) | ![](./Images/icons8-internet-laces-72.png) | ![](./favicon.png) |  |
+| ![](./Images/icons8-database-32.png) | ![](./Images/icons8-database-96.png) | ![](./Images/icons8-internet-laces-72.png) | ![](./favicon.png) | ![](./Images/icons8-octahedron-32.png)  |
+| ![](./Images/icons8-code-folder-32.png) | ![](./Images/icons8-dice-32.png) | ![](./Images/icons8-fidget-spinner-32.png) | ![](./Images/icons8-joker-32.png) | ![](./Images/icons8-knight-32.png) |
+| ![](./Images/icons8-lottery-32.png) | ![](./Images/icons8-code-folder-32.png) | ![](./Images/icons8-test-folder-32.png) | ![](./Images/icons8-folder-tree-32.png) |  |
+
 
 While we're at it, let's also add in a reference to the set of [**Line-Awesome**](https://icons8.com/line-awesome) icons via a CDN (*Content-Delivery Network*) resource. That way, we can throw in a couple of nice icons for buttons/links along our journey.
 
