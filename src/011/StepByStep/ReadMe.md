@@ -1,5 +1,10 @@
 # WestWind Blazor - CRUD
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-3%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-9--15%20min-blue)
+
+
+
 > This material is created as a guide to creating simple CRUD pages for the `Product` table in the *WestWind Wholesale* database. It is presumed that you have [installed the database](../db/ReadMe.md) and followed the [setup instructions](../ReadMe.md) to reverse engineer the database.
 
 The **Products** table contains information on the types of items sold through WestWind Wholesale.

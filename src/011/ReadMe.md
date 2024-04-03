@@ -1,5 +1,8 @@
 # WestWind - Blazor Version
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-7%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-14--28%20min-blue)
+
 **WestWind** is my personal adaptation of the original *Northwind Traders* sample database by Microsoft. The [*`.bacpac`* file](./db/WestWind.bacpac) is included in this folder, and [instructions on installing](./db/ReadMe.md) it are included. The [full ERD](#erd) for this database is at the bottom of this page, and the repo can be found on [GitHub](https://github.com/dgilleland/West-Wind-Wholesale).
 
 ![Products](./db/WestWind-2019-Products-SimplifiedClassDiagram.png)

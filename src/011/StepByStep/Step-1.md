@@ -1,5 +1,8 @@
 # A CRUD-Based Application
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-6%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-18--30%20min-blue)
+
 The core database operations are the *Create, Read, Update and Delete* (CRUD) tasks to work with table data. The operations that *modify* the database are the *Create, Update and Delete*, and these are commonly done on a table-by-table basis. *Read* operations will sometimes involve grabbing data from a single table, but more often than not they will require getting data from more than one table (a *de-normalizing* effect, if you will).
 
 As a CRUD-based application, we will generate a separate class for each table that will focus on providing methods to perform each of these operations. We will call these our *Service* classes.

@@ -1,5 +1,9 @@
 # Database Update
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-5%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-15--25%20min-blue)
+
+
 Whether you are adding new products or updating existing products, the set of user input controls is the same. We'll expand the capabilities of the `Edit.razor` page to support updating by making some changes and additions to the current form.
 
 ## Add `UpdateProduct`

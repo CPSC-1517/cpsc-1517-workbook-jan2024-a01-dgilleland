@@ -1,5 +1,8 @@
 # Installing Databases
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-3%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-6--9%20min-blue)
+
 Your database(s) will be provided as either *`.bacpac`* or *`.dacpac`* files. These files can be used to create or restore a database on your database server. The process can be completed through *SSMS* or the command line.
 
 ## Installing a `*.bacpac`

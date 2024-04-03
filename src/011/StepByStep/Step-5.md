@@ -1,5 +1,8 @@
 # Database Delete
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-6%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-18--30%20min-blue)
+
 Deleting data from the database is a significantly sensitive action because it's so destructive in nature. Once you've removed the data from the database, it's gone for good! As such, it would make good sense to put a little "protection" around our user's interaction for delete requests. We'll pop up a confirmation dialog to the user to make sure they truly want to delete the data.
 
 To make this work, we'll need to hook into JavaScript. Fortunately, Blazor makes this possible through a simple `@inject` statement that we can put on our page.

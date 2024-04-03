@@ -1,5 +1,8 @@
 # Filtered Search
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-3%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-9--15%20min-blue)
+
 Currently, our product catalog page lists all the products in the database. But what if we want a subset of items to be displayed? We can add a *filter* for our catalog. Let's explore that by searching for products whose name contains part of what the user has entered.
 
 ## Add to the Product Services

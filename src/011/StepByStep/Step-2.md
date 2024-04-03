@@ -1,5 +1,8 @@
 # Database Read
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-6%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-18--30%20min-blue)
+
 We will provide two methods to read Product data from the database. The first will get all the products. The second will get a single product based on the Id.
 
 ```cs

@@ -1,5 +1,8 @@
 # Database Add
 
+> ![Est. Read Time](https://img.shields.io/badge/Read%20Time-8%20min-brightgreen)
+> ![Est. Code Time](https://img.shields.io/badge/Code%20Time-24--40%20min-blue)
+
 Let's take some observations about the data stored in the Products table. Specifically, note that there are two non-nullable foreign key colums: one for the related Category and one for the related Supplier.
 
 ![](./ProductsTable.png)
