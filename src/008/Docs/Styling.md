@@ -25,12 +25,18 @@ While we're at it, let's also add in a reference to the set of [**Line-Awesome**
       href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
 ```
 
-Now it's time to introduce our classless-styling library, [**Pico.css**](). Add the following line to the `<head>` of the `App.razor` component.
+Now it's time to introduce our classless-styling library, [**Pico.css**](https://picocss.com/). Add the following line to the `<head>` of the `App.razor` component.
 
 > ***NOTE:** the portions that read `@@picocss` and `pico@@2` each have an extra `@` because of how Razor pages (the foundation for Blazor) use that as a way of identifying variables; the double `@@` "escapes" so that a single `@` symbol will appear in the rendered HTML.*
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@picocss/pico@@2/css/pico.min.css">
+```
+
+If you also want to use some of the newer features of Pico.css regarding [colors](https://picocss.com/docs/colors#usage-with-css), you can add in the next line as well.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@picocss/pico@@2/css/pico.color.min.css">
 ```
 
 ## Prepping our Site Navigation
