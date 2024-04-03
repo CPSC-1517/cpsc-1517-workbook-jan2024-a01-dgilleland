@@ -38,7 +38,7 @@ gantt
     Ex 1, due Jan 28 : 2024-01-12, 2024-01-28
     Ex 2, due Feb 10 : 2024-01-26, 2024-02-10
     Ex 3, due Mar 15 : 2024-02-07, 2024-03-15
-    Ex 4, due Apr 04 : 2024-03-15, 2024-04-04
+    Ex 4, due Apr 05 : 2024-03-15, 2024-04-05
     Proj Deliverable 1, due Apr 12 : 2024-03-15, 2024-04-12
     Proj Deliverable 2, due Apr 26 : 2024-03-28, 2024-04-26
 
