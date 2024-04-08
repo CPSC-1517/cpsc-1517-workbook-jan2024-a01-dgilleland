@@ -2,7 +2,7 @@
 
 [![Quick Style](./docs/images/favicon.png) Quick Style](./src/008/Docs/Styling.md) instructions for *empty Blazor projects*. 
 
-> These are my notes on what I plan to teach in each [**upcoming class**](#mar-22). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
+> These are my notes on what I plan to teach in each [**upcoming class**](#apr-9). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ##### *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
@@ -330,12 +330,48 @@ Note that each time you run this, it will overwrite the existing content in that
   - [ ] Product Catalog page
   - [ ] Product Editing page
 
-## Mar 29
+## Mar 29 (Good Friday)
 
 - [ ] ***[Self-study]*** - Continue Developing the WestWind Demo ([`~/src/011`](./src/011/ReadMe.md))
   - [ ] Complete any remaining demo work for Products CRUD
   - [ ] Practice by creating CRUD services/pages for **Suppliers**
   - [ ] Practice by creating CRUD services/pages for **Categories**
+
+----
+
+## Apr 2
+
+- [ ] Setting up the BLL Service Class
+- [ ] Exposing Services through a DI Extension Method
+- [ ] Registering Services in `Program.cs`
+
+## Apr 3
+
+- [ ] *Read* - Data Lookup Services
+
+## Apr 5
+
+- [ ] Blazor Report of Data
+  - [ ] Paging
+  - [ ] Search/Filter
+
+----
+
+## Apr 9
+
+- [ ] Data Manipulation Services
+  - [ ] *Add*
+  - [ ] *Update*
+  - [ ] *Delete*
+- [ ] Edit Form for Add/Update/Delete
+- [ ] Navigating from a `<QuickGrid>`
+
+## Apr 10
+
+
+## Apr 11
+
+
 
 ----
 
