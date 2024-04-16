@@ -1,0 +1,64 @@
+@page "/Supplier/Edit/{id:int?}"
+@rendermode InteractiveServer
+
+@using WestWindWholesale
+@using WestWindWholesale.Models
+@inject IJSRuntime JsRuntime
+@inject NavigationManager Navigator
+@inject SupplierServices SupplierDbServices
+
+<PageTitle>Supplier Editor</PageTitle>
+
+<h1>Supplier Editor</h1>
+
+<EditForm Model="DataModel" FormName="Editor" OnValidSubmit="OnSave">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label>Company Name
+        <InputText @bind-Value="DataModel.CompanyName" />
+    </label>
+
+    <label>Contact Name
+        <InputText @bind-Value="DataModel.ContactName" />
+    </label>
+
+    <label>Contact Title
+        <InputText @bind-Value="DataModel.ContactTitle" />
+    </label>
+
+    <label>Email
+        <InputText @bind-Value="DataModel.Email" />
+    </label>
+
+    @* <label>Address
+        <InputText />
+    </label> *@
+
+    <label>Phone
+        <InputText @bind-Value="DataModel.Phone" />
+    </label>
+
+    <label>Fax
+        <InputText @bind-Value="DataModel.Fax" />
+    </label>
+
+    <button>Save</button>
+    <button @onclick="OnClear">Clear Form</button>
+</EditForm>
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private Supplier DataModel { get; set; } = new();
+
+    private void OnSave()
+    {
+
+    }
+
+    private void OnClear()
+    {
+
+    }
+}

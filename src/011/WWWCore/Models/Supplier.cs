@@ -15,21 +15,29 @@ public partial class Supplier
     public int SupplierId { get; set; }
 
     [StringLength(40)]
+    [Required]
+    [MinLength(1)]
     public string CompanyName { get; set; } = null!;
 
     [StringLength(30)]
+    [Required]
+    [MinLength(1)]
     public string ContactName { get; set; } = null!;
 
     [StringLength(30)]
     public string? ContactTitle { get; set; }
 
     [StringLength(50)]
+    [Required]
+    [MinLength(1)]
     public string Email { get; set; } = null!;
 
     [Column("AddressID")]
     public int AddressId { get; set; }
 
     [StringLength(24)]
+    [Required]
+    [MinLength(1)]
     public string Phone { get; set; } = null!;
 
     [StringLength(24)]
